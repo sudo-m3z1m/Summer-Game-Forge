@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqrgi4gamtasr"]
+
+[ext_resource type="Script" path="res://game/userInterface/pause_menu.gd" id="1_281p1"]
+[ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="1_c6qck"]
+[ext_resource type="Script" path="res://core/ui/control_sounds_component.gd" id="3_c1mtb"]
+[ext_resource type="AudioStream" uid="uid://ctre8vdeyxrtj" path="res://assets/ui/click1.wav" id="4_n62lf"]
+[ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="5_qyng3"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_281p1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.5
+offset_top = -125.0
+offset_right = 279.5
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="PanelContainer" parent="HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(135, 135)
+layout_mode = 2
+
+[node name="CenterContainer" type="MarginContainer" parent="HBoxContainer/Buttons"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Buttons/CenterContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer/Buttons/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Продолжить"
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/Buttons/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Меню
+"
+
+[node name="ExitButton" type="Button" parent="HBoxContainer/Buttons/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Выход"
+
+[node name="Settings" parent="HBoxContainer" instance=ExtResource("1_c6qck")]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+
+[node name="ControlSoundsComponent" type="Node" parent="." node_paths=PackedStringArray("controls_container")]
+script = ExtResource("3_c1mtb")
+controls_container = NodePath("../HBoxContainer/Buttons")
+button_pressed_stream = ExtResource("4_n62lf")
+option_selected_stream = ExtResource("5_qyng3")
+slider_drag_stream = ExtResource("4_n62lf")
+slider_changed_stream = ExtResource("5_qyng3")
+tab_selected_stream = ExtResource("4_n62lf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ControlSoundsComponent"]
+stream = ExtResource("5_qyng3")
