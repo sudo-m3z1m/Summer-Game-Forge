@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://csawkuvkki2bh"]
+
+[ext_resource type="Script" path="res://game/main/table.gd" id="1_y6r52"]
+[ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="2_m5fhi"]
+
+[sub_resource type="Curve3D" id="Curve3D_kaswk"]
+_data = {
+"points": PackedVector3Array(0.0553392, -0.365817, 0.145316, 0, 0, 0, -0.0299073, 0.0535615, 0.017942, -0.0889081, -0.101092, -0.0253452, 0.0889081, 0.101092, 0.0253452, 0.218993, 0.752728, 0.060797, -0.235354, -0.00759447, 0.0426681, 0.235354, 0.00759447, -0.0426681, 0.709667, 0.862728, 0.0633161, 0, 0, 0, 0, 0, 0, 1.35832, 0.391756, -0.0534601, 0, 0, 0, 0, 0, 0, 1.63586, 0.376478, -0.143543),
+"tilts": PackedFloat32Array(0, 0.235, -1.01984, -3.01775, 0)
+}
+point_count = 5
+
+[sub_resource type="Animation" id="Animation_twjos"]
+resource_name = "close_disks_storage"
+
+[sub_resource type="Animation" id="Animation_4e2p0"]
+resource_name = "open_disks_storage"
+
+[sub_resource type="Animation" id="Animation_oqpcs"]
+resource_name = "take_new_disk"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.6, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_xigod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nr4gc"]
+_data = {
+"RESET": SubResource("Animation_xigod"),
+"close_disks_storage": SubResource("Animation_twjos"),
+"open_disks_storage": SubResource("Animation_4e2p0"),
+"take_new_disk": SubResource("Animation_oqpcs")
+}
+
+[node name="Table" type="Node3D"]
+script = ExtResource("1_y6r52")
+
+[node name="TableLevel" parent="." instance=ExtResource("2_m5fhi")]
+
+[node name="PlayerMarker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.8)
+
+[node name="EnemiesMarkers3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.3)
+
+[node name="Marker3D" type="Marker3D" parent="EnemiesMarkers3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 1)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemiesMarkers3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 1)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemiesMarkers3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="Marker3D4" type="Marker3D" parent="EnemiesMarkers3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+
+[node name="Units" type="Node3D" parent="."]
+
+[node name="Disk" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -2.1)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00063, -0.0162873, -2)
+curve = SubResource("Curve3D_kaswk")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.30809, 0.0535175, -0.949858, -0.012257, 0.99855, 0.0522869, 0.951276, -0.00446658, 0.308304, 1.63586, 0.376478, -0.143543)
+progress = 2.38177
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Path3D/PathFollow3D"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nr4gc")
+}
