@@ -7,5 +7,4 @@ extends Node
 
 func _ready():
 	sound_manager.set_looped(sound_manager.play(background_music_stream))
-	
 	fog_animation_player.play("fog_wrap")

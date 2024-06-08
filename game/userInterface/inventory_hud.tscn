@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn47o678qcmyq"]
+
+[ext_resource type="FontFile" uid="uid://dtfprycdg5rj8" path="res://assets/Fonts/vcrosdmonorusbyd.ttf" id="1_15ave"]
+[ext_resource type="Script" path="res://game/userInterface/inventory_hud.gd" id="1_c7exy"]
+[ext_resource type="PackedScene" uid="uid://blln2ibkr4ih" path="res://game/userInterface/cell.tscn" id="3_sm50g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejdcf"]
+content_margin_left = 15.0
+content_margin_top = 20.0
+content_margin_right = 15.0
+content_margin_bottom = 20.0
+bg_color = Color(0.235294, 0.290196, 0.301961, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.192157, 0.192157, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_size = 10
+
+[node name="InventoryHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c7exy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ejdcf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_15ave")
+text = "Инвентарь"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 35
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/HBoxContainer" instance=ExtResource("3_sm50g")]
+layout_mode = 2
+current_cell_type = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+layout_mode = 2
+current_cell_type = null
+
+[node name="Cell2" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+layout_mode = 2
+current_cell_type = null
+
+[node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+layout_mode = 2
+current_cell_type = null
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("3_sm50g")]
+layout_mode = 2
+current_cell_type = null

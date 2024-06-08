@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=9 format=3 uid="uid://bpgrytes3wmk"]
 
-[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
+[ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
 [ext_resource type="PackedScene" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd3jc"]
+size = Vector3(0.529358, 0.468994, 0.350342)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8w3ig"]
 viewport_path = NodePath("SubViewport")
@@ -16,16 +19,26 @@ albedo_texture = SubResource("ViewportTexture_8w3ig")
 [node name="PC" instance=ExtResource("1_1x2hh")]
 script = ExtResource("2_doy1v")
 
-[node name="Screen" parent="." index="1" instance=ExtResource("2_ft710")]
+[node name="CameraMarker" type="Marker3D" parent="." index="0"]
+transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 0.623481, 0.702109, 1.14031)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 0.623481, 0.671708, 1.14031)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.999703, 0, 0.0243625, 0, 1, 0, -0.0243625, 0, 0.999703, -0.00992489, -0.0133057, -0.0116578)
+shape = SubResource("BoxShape3D_xd3jc")
+
+[node name="Screen" parent="." index="3" instance=ExtResource("2_ft710")]
 
 [node name="Cube_006" parent="Screen" index="0"]
 transform = Transform3D(-0.204388, 1.14658e-08, 0.0336324, -1.94548e-08, -0.142799, 0, 0.0880234, -4.93796e-09, 0.0780935, 0.619805, 0.716637, 1.15985)
 surface_material_override/0 = SubResource("StandardMaterial3D_iufki")
 
-[node name="Cube_006" parent="." index="2"]
+[node name="Cube_006" parent="." index="4"]
 visible = false
 
-[node name="SubViewport" type="SubViewport" parent="." index="9"]
+[node name="SubViewport" type="SubViewport" parent="." index="11"]
 size = Vector2i(800, 640)
 size_2d_override = Vector2i(740, 645)
 
@@ -46,6 +59,6 @@ layout_mode = 1
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
 
 [editable path="Screen"]

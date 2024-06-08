@@ -3,22 +3,14 @@ extends Resource
 class_name Item
 
 @export var durability: int
-@export var cell: ItemCell
+@export var cell: Cell.CellType
 
 #TODO maybe need to make dict with items id
 @export var item_name: String
 @export_multiline var item_description: String
 @export_multiline var item_property: String
 
-enum ItemCell { #TODO Need to unit with inventory class
-	HEAD,
-	BODY,
-	HANDS,
-	LEGS
-	#FOOTS probably
-}
-
-func item_can_be_placed(cell: ItemCell) -> bool:
+func item_can_be_placed(cell: Cell.CellType) -> bool:
 	if self.cell != cell:
 		return false
 	return true

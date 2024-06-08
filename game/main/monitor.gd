@@ -2,8 +2,8 @@ class_name Monitor extends Node3D
 
 @onready var item_description_screen: ItemDescriptionHud = %ItemDescription
 @onready var reviews_screen: Control = %Reviews
-
-var current_screen: Control
+@onready var current_screen: Control = reviews_screen
+@onready var camera_marker: Marker3D = $CameraMarker
 
 func change_current_screen(new_screen: Control) -> void:
 	current_screen.hide()
