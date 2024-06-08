@@ -2,7 +2,7 @@ extends Node3D
 
 @export var is_onecolumn: bool = true
 @export var disks_in_column: int = 5
-@export var offset: float = 0.3
+@export var offset: float = 0.15
 
 func _ready():
 	child_entered_tree.connect(on_disk_entered)
@@ -16,7 +16,6 @@ func on_disk_entered(disk):
 	if not is_onecolumn:
 		disk.position.z = -column * offset
 	disk.position.x = offset * ((disks_in_column * column) - tree_position)
-	print(disk.position)
 
 func on_disk_exiting(disk):
 	pass

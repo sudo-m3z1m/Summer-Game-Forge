@@ -2,6 +2,3 @@
 
 [node name="TableLevel" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013628, -0.0212173, 0.0167603)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(3, 0.5, 5)
