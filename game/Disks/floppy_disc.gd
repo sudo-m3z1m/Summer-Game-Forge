@@ -10,7 +10,7 @@ class_name FloppyDisc
 #func place_item(item_cell: Item.ItemCell, inventory_cell: InventoryCell) -> void:
 	#if !item.item_can_be_placed(inventory_cell):
 		#return
-	#inventory_cell.put_item()
+	#inventory_cell.put_item() #TODO need to make uncomment this after creating inventory class with cells
 
 func animate_selection(is_selected: bool) -> void:
 	var tween: Tween = create_tween()
