@@ -252,12 +252,12 @@ mesh = SubResource("ArrayMesh_kbtqj")
 skeleton = NodePath("")
 
 [node name="Cube_019" type="MeshInstance3D" parent="TableModel"]
-transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.24205, 1.43758, 0.409251, 1.26013)
+transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.24205, 1.43511, 0.409251, 1.26013)
 mesh = SubResource("ArrayMesh_mb8g0")
 skeleton = NodePath("")
 
 [node name="Cube_023" type="MeshInstance3D" parent="TableModel"]
-transform = Transform3D(0.838381, 0, 7.84908e-08, 0, 0.0469008, 0, -5.32984e-08, 0, 1.23466, 1.44115, 0.409251, 1.26013)
+transform = Transform3D(0.838381, 0, 7.84908e-08, 0, 0.0469008, 0, -5.32984e-08, 0, 1.23466, 1.44363, 0.409251, 1.26013)
 mesh = SubResource("ArrayMesh_pu8wm")
 skeleton = NodePath("")
 
@@ -265,7 +265,6 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_yvuj6")
 }
-speed_scale = 3.0
 
 [node name="TableLevel" parent="." instance=ExtResource("2_m5fhi")]
 

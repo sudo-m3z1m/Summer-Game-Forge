@@ -1,24 +1,32 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2fup3v41tkqa"]
+[gd_scene load_steps=23 format=3 uid="uid://c2fup3v41tkqa"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
+[ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
+[ext_resource type="Script" path="res://game/main/grab_floppy_disk.gd" id="6_ebyv6"]
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
-[ext_resource type="PackedScene" uid="uid://dcglsiyotg7nf" path="res://game/Disks/floppy_disc.tscn" id="7_w047m"]
-[ext_resource type="PackedScene" uid="uid://2j4u3oqbnnt1" path="res://game/main/monitor.tscn" id="10_6cvlt"]
+[ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
+[ext_resource type="PackedScene" uid="uid://2j4u3oqbnnt1" path="res://game/main/monitor.tscn" id="12_u08xi"]
 
 [sub_resource type="Environment" id="Environment_yrohi"]
 background_mode = 1
 background_color = Color(0.178395, 0.150182, 0.22173, 1)
+ambient_light_source = 1
+reflected_light_source = 1
 tonemap_mode = 1
 tonemap_exposure = 0.5
 tonemap_white = 0.65
 ssao_enabled = true
 ssao_intensity = 3.0
+ssil_enabled = true
+ssil_radius = 0.5
+ssil_intensity = 0.37
+ssil_sharpness = 0.0
 sdfgi_enabled = true
 sdfgi_y_scale = 0
 sdfgi_energy = 1.2
@@ -31,6 +39,9 @@ volumetric_fog_anisotropy = 0.9
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6w8ea"]
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5o7f3"]
+width = 128
+height = 128
+depth = 128
 color_ramp = SubResource("Gradient_wubxn")
 noise = SubResource("FastNoiseLite_6w8ea")
 
@@ -66,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5, 10),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(50, 50, 50), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(100, 100, 100), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ionys"]
@@ -86,6 +97,10 @@ script = ExtResource("1_obpee")
 
 [node name="SoundManager" type="Node" parent="."]
 script = ExtResource("1_pqany")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("table")]
+script = ExtResource("3_0r2dt")
+table = NodePath("../World/Table")
 
 [node name="World" type="Node3D" parent="."]
 
@@ -128,7 +143,7 @@ light_color = Color(0.399896, 0.29546, 0.291643, 1)
 mesh = SubResource("PlaneMesh_d41xa")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(-1, -7.62269e-14, -8.74228e-08, -1.21035e-08, 0.99037, 0.138447, 8.65809e-08, 0.138447, -0.99037, 0, 0.81, -2)
+transform = Transform3D(-1, -7.80033e-14, -8.74228e-08, -1.21035e-08, 0.99037, 0.138447, 8.65809e-08, 0.138447, -0.99037, 0, 0.81, -2.2253)
 fov = 60.0
 
 [node name="Controller" type="Node" parent="World"]
@@ -139,10 +154,14 @@ start_state = "Turn"
 script = ExtResource("4_h85v6")
 start_state = "ChoosingAction"
 
-[node name="ChoosingAction" type="Node" parent="World/Controller/Turn"]
+[node name="ChoosingAction" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("deck")]
 script = ExtResource("5_egoav")
+deck = NodePath("../../../Deck")
 
-[node name="GrabFlopDisk" type="Node" parent="World/Controller/Turn"]
+[node name="GrabFloppyDisk" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
+script = ExtResource("6_ebyv6")
+hand_marker = NodePath("../../../HandMarker3D")
+deck = NodePath("../../../Deck")
 
 [node name="GrabFlopDisk2" type="Node" parent="World/Controller/Turn"]
 
@@ -159,11 +178,15 @@ script = ExtResource("6_vxhaq")
 is_onecolumn = false
 disks_in_column = 4
 
-[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
-[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
-[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
-[node name="PC" parent="." instance=ExtResource("10_6cvlt")]
-transform = Transform3D(-0.986072, 0, 0.166321, 0, 1, 0, -0.166321, 0, -0.986072, 0.846094, 0, -0.037684)
+[node name="HandMarker3D" type="Marker3D" parent="World"]
+transform = Transform3D(0.56834, -0.257453, -0.781478, 0.0195148, 0.953736, -0.30001, 0.822563, 0.155258, 0.547071, -0.4, 0.5, -1.6)
+gizmo_extents = 0.1
+
+[node name="PC" parent="." instance=ExtResource("12_u08xi")]
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
