@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
-[ext_resource type="PackedScene" path="res://game/main/table.tscn" id="4_vweva"]
+[ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
-[ext_resource type="PackedScene" uid="uid://bm5d1mj11vs8i" path="res://game/Disks/floppy_disc.tscn" id="7_w047m"]
-[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="10_np8uh"]
+[ext_resource type="PackedScene" uid="uid://dcglsiyotg7nf" path="res://game/Disks/floppy_disc.tscn" id="7_w047m"]
+[ext_resource type="PackedScene" uid="uid://2j4u3oqbnnt1" path="res://game/main/monitor.tscn" id="10_6cvlt"]
 
 [sub_resource type="Environment" id="Environment_yrohi"]
 background_mode = 1
@@ -129,6 +129,7 @@ mesh = SubResource("PlaneMesh_d41xa")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(-1, -7.62269e-14, -8.74228e-08, -1.21035e-08, 0.99037, 0.138447, 8.65809e-08, 0.138447, -0.99037, 0, 0.81, -2)
+fov = 60.0
 
 [node name="Controller" type="Node" parent="World"]
 script = ExtResource("3_q38pu")
@@ -164,7 +165,5 @@ disks_in_column = 4
 
 [node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
 
-[node name="PC" parent="World" instance=ExtResource("10_np8uh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
-
-[node name="Monitor" type="Node3D" parent="World"]
+[node name="PC" parent="." instance=ExtResource("10_6cvlt")]
+transform = Transform3D(-0.986072, 0, 0.166321, 0, 1, 0, -0.166321, 0, -0.986072, 0.846094, 0, -0.037684)
