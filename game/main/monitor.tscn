@@ -1,6 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=13 format=3 uid="uid://bpgrytes3wmk"]
 
-[ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
+[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
@@ -10,12 +11,47 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xd3jc"]
 size = Vector3(0.529358, 0.468994, 0.350342)
 
+[sub_resource type="Shader" id="Shader_v0tva"]
+code = "shader_type spatial;
+
+uniform sampler2D viewport;
+uniform sampler2D noise;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 texture1 = texture(viewport, UV).rgb;
+	vec2 noise_uv = UV + cos(TIME) * 100.0f;
+	//noise_uv.y = UV.y;
+	vec3 texture2 = texture(noise, noise_uv).rgb;
+	ALBEDO = mix(texture1, texture2, 0.1);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pajjj"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mn3h"]
+width = 48
+height = 64
+noise = SubResource("FastNoiseLite_pajjj")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_8w3ig"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iufki"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqs0k"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_8w3ig")
+render_priority = 0
+shader = SubResource("Shader_v0tva")
+shader_parameter/viewport = SubResource("ViewportTexture_8w3ig")
+shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6rv3"]
 
@@ -36,7 +72,7 @@ shape = SubResource("BoxShape3D_xd3jc")
 
 [node name="Cube_006" parent="Screen" index="0"]
 transform = Transform3D(-0.204388, 1.14658e-08, 0.0336324, -1.94548e-08, -0.142799, 0, 0.0880234, -4.93796e-09, 0.0780935, 0.619805, 0.716637, 1.15985)
-surface_material_override/0 = SubResource("StandardMaterial3D_iufki")
+material_override = SubResource("ShaderMaterial_lqs0k")
 
 [node name="Cube_006" parent="." index="4"]
 visible = false
@@ -48,7 +84,15 @@ surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
 size = Vector2i(800, 640)
 size_2d_override = Vector2i(740, 645)
 
-[node name="MonitorHud" type="Control" parent="SubViewport" index="0"]
+[node name="ColorRect" type="ColorRect" parent="SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.548443, 0.812331, 0.945205, 1)
+
+[node name="MonitorHud" type="Control" parent="SubViewport" index="1"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

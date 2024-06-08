@@ -13,6 +13,7 @@ func enter(object: Object, state_machine: StateMachine):
 	var disk = deck.get_selected()
 	#deck.deselect_disk(deck.get_disk_index(disk))
 	get_tree().create_tween().tween_property(disk, "global_position", hand_marker.global_position, grab_time).set_ease(Tween.EASE_OUT)
+	get_tree().create_tween().tween_property(disk, "global_rotation", hand_marker.global_rotation, grab_time).set_ease(Tween.EASE_OUT)
 	#disk.look_at(disk.to_local(get_viewport().get_camera_3d().global_position))
 	#disk.get_child(0).rotation.y = PI/2
 	

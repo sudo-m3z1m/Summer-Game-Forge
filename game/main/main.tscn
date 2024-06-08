@@ -208,7 +208,7 @@ shape = SubResource("BoxShape3D_y3v44")
 [node name="Monitor" type="Node3D" parent="World"]
 
 [node name="HandMarker3D" type="Marker3D" parent="World"]
-transform = Transform3D(0.56834, -0.257453, -0.781478, 0.0195148, 0.953736, -0.30001, 0.822563, 0.155258, 0.547071, -0.4, 0.5, -1.6)
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -0.2, 0.5, -1.7)
 gizmo_extents = 0.1
 
 [node name="PC" parent="." instance=ExtResource("12_u08xi")]
