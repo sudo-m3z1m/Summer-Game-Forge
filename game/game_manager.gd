@@ -4,7 +4,7 @@ extends Node
 
 signal enemy_turn
 signal player_turn
-
+signal player_grab_disk
 #TODO ALL
 func player_confirm_turn():
 	pass

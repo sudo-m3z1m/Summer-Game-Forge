@@ -12,7 +12,9 @@ class_name FloppyDisk
 		#return
 	#inventory_cell.put_item() #TODO need to make uncomment this after creating inventory class with cells
 
+var is_selected: bool = false
 func animate_selection(is_selected: bool) -> void:
+	self.is_selected = is_selected
 	var tween: Tween = create_tween()
 	tween.tween_property(model, "position:y", Vector3.ZERO.y + \
 	max_selection_height * int(is_selected), 0.3)

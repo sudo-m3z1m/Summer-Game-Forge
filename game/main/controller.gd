@@ -11,8 +11,10 @@ func get_world_mouse_position(position: Vector2):
 	var result = get_world_point(position)
 	return result.get("position") if result.has("position") else Vector3()
 
-func get_world_point(position: Vector2):
+func get_world_point(position: Vector2, with_areas: bool = false):
 	var camera = get_tree().get_root().get_camera_3d()
 	var parameters = PhysicsRayQueryParameters3D.create(camera.project_ray_origin(position), camera.project_ray_normal(position) * 99999)
+	parameters.collide_with_areas = with_areas
+	parameters.collide_with_bodies = !with_areas
 	var result = get_parent().get_world_3d().direct_space_state.intersect_ray(parameters)
 	return result
