@@ -9,11 +9,9 @@ func _ready():
 		state = get_node(start_state)
 		state.enter(owner, self)
 
-
 func _process(delta):
 	if state:
 		state.update(delta)
-
 
 func transition_to(state: String):
 	self.state.exit()

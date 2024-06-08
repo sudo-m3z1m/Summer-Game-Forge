@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ouwn2rp8q2i6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gvvwv"]
+
+[node name="TableLevel" type="Node3D"]
+
+[node name="EnemysComponent" type="Node3D" parent="."]
+
+[node name="EnemyPosition" type="Marker3D" parent="EnemysComponent"]
+
+[node name="EnemyPosition2" type="Marker3D" parent="EnemysComponent"]
+
+[node name="EnemyPosition3" type="Marker3D" parent="EnemysComponent"]
+
+[node name="EnemyPosition4" type="Marker3D" parent="EnemysComponent"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_gvvwv")
+
+[node name="PlayerPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0248475, 0.634427)
