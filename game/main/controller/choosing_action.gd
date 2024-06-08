@@ -5,8 +5,12 @@ extends State
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
+	locked = true
+	await get_tree().create_timer(0.5).timeout
+	locked = false
 
 var last_update_collider = null
+var locked: bool = false
 func update(delta: float):
 	super(delta)
 	
@@ -23,10 +27,11 @@ func update(delta: float):
 	
 	last_update_collider = collider
 	
+	if locked: return
 	if Input.is_action_just_pressed("left_mouse"):
 		if collider is FloppyDisk:
 			try_transition("GrabFloppyDisk")
-		if collider.get_parent() is Monitor:
+		if collider and collider.get_parent() is Monitor:
 			try_transition("MonitorState")
 
 func exit():
