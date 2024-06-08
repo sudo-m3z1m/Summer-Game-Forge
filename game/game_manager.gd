@@ -1,8 +1,11 @@
 extends Node
 
+@export var table: Table
+
 signal enemy_turn
 signal player_turn
 
+#TODO ALL
 func player_confirm_turn():
 	pass
 
@@ -11,3 +14,4 @@ func _enemy_turn():
 
 func _spawn_unit():
 	pass
+	#table.spawn_unit()

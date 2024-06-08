@@ -2,7 +2,13 @@ extends Resource
 
 class_name Item
 
+@export var durability: int
 @export var cell: ItemCell
+
+#TODO maybe need to make dict with items id
+@export var item_name: String
+@export_multiline var item_description: String
+@export_multiline var item_property: String
 
 enum ItemCell { #TODO Need to unit with inventory class
 	HEAD,

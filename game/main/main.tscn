@@ -1,8 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2fup3v41tkqa"]
+[gd_scene load_steps=21 format=3 uid="uid://c2fup3v41tkqa"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
+[ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
+[ext_resource type="PackedScene" path="res://game/main/table.tscn" id="4_vweva"]
+[ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
+[ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
+[ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
+[ext_resource type="PackedScene" uid="uid://bm5d1mj11vs8i" path="res://game/Disks/floppy_disc.tscn" id="7_w047m"]
+[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="10_np8uh"]
 
 [sub_resource type="Environment" id="Environment_yrohi"]
 background_mode = 1
@@ -10,6 +17,8 @@ background_color = Color(0.178395, 0.150182, 0.22173, 1)
 tonemap_mode = 1
 tonemap_exposure = 0.5
 tonemap_white = 0.65
+ssao_enabled = true
+ssao_intensity = 3.0
 sdfgi_enabled = true
 sdfgi_y_scale = 0
 sdfgi_energy = 1.2
@@ -91,7 +100,8 @@ size = Vector3(30, 15, 30)
 shape = 2
 material = SubResource("FogMaterial_uk2r3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World/GraphicsAndLIght/FogVolume"]
+[node name="FogAnimationPlayer" type="AnimationPlayer" parent="World/GraphicsAndLIght/FogVolume"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ionys")
@@ -111,24 +121,50 @@ spot_attenuation = 0.85
 spot_angle = 45.472
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/GraphicsAndLIght"]
-transform = Transform3D(1, 0, 0, 0, 0.0859734, -0.996297, 0, 0.996297, 0.0859735, 0, 0, 0)
-light_color = Color(0.589322, 0.705763, 0.955179, 1)
+transform = Transform3D(0.759476, 0.514129, -0.398583, 0.353478, 0.188218, 0.916312, 0.546123, -0.836807, -0.0387859, 0, 0, 0)
+light_color = Color(0.399896, 0.29546, 0.291643, 1)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
 mesh = SubResource("PlaneMesh_d41xa")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -4)
+transform = Transform3D(-1, -7.62269e-14, -8.74228e-08, -1.21035e-08, 0.99037, 0.138447, 8.65809e-08, 0.138447, -0.99037, 0, 0.81, -2)
 
 [node name="Controller" type="Node" parent="World"]
 script = ExtResource("3_q38pu")
+start_state = "Turn"
 
 [node name="Turn" type="Node" parent="World/Controller"]
+script = ExtResource("4_h85v6")
+start_state = "ChoosingAction"
 
 [node name="ChoosingAction" type="Node" parent="World/Controller/Turn"]
+script = ExtResource("5_egoav")
 
 [node name="GrabFlopDisk" type="Node" parent="World/Controller/Turn"]
 
 [node name="GrabFlopDisk2" type="Node" parent="World/Controller/Turn"]
 
 [node name="EnemyTurn" type="Node" parent="World/Controller"]
+
+[node name="Table" parent="World" instance=ExtResource("4_vweva")]
+
+[node name="Deck" type="Node" parent="World"]
+script = ExtResource("5_bocpp")
+
+[node name="DisksContainer" type="Node3D" parent="World/Deck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148775, 0.466678, -1.48293)
+script = ExtResource("6_vxhaq")
+is_onecolumn = false
+disks_in_column = 4
+
+[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+
+[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+
+[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+
+[node name="PC" parent="World" instance=ExtResource("10_np8uh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
+
+[node name="Monitor" type="Node3D" parent="World"]

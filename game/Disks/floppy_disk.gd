@@ -1,6 +1,6 @@
 extends Node3D
 
-class_name FloppyDisc
+class_name FloppyDisk
 
 @export var item: Item
 @export_range(0, 5) var max_selection_height: float
