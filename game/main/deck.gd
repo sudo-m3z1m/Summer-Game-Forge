@@ -11,6 +11,13 @@ func append_item(item: Item):
 	items.append(item)
 	#TODO спавн флопи дисков под контейнер
 
+func append_disk(disk: FloppyDisk):
+	disks.append(disk)
+	if disk.get_parent():
+		disk.reparent(disks_container)
+	else:
+		disks_container.add_child(disk)
+
 func select_disk(index: int):
 	disks[index].animate_selection(true)
 

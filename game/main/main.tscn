@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c2fup3v41tkqa"]
+[gd_scene load_steps=28 format=3 uid="uid://c2fup3v41tkqa"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
-[ext_resource type="Script" path="res://game/main/grab_floppy_disk.gd" id="6_ebyv6"]
+[ext_resource type="Script" path="res://game/main/controller/grab_floppy_disk.gd" id="6_ebyv6"]
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
+[ext_resource type="Script" path="res://game/main/controller/put_floppy_disk.gd" id="8_ber8l"]
 [ext_resource type="Script" path="res://game/main/monitor_state.gd" id="8_igydc"]
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/Items/item.gd" id="12_0lehm"]
-[ext_resource type="PackedScene" uid="uid://2j4u3oqbnnt1" path="res://game/main/monitor.tscn" id="12_u08xi"]
+[ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
 
 [sub_resource type="Environment" id="Environment_yrohi"]
 background_mode = 1
@@ -102,6 +103,9 @@ item_name = "Шлем - тиски"
 item_description = "История этого шлема уникальна, появился этот шлем, когда Ханма Юдзиро решил доказать президенту Северной Кореи, что его сила превосходит всякое оружие. Действительно уникальное сокровище"
 item_property = "Всегда сдавливает голову, но даёт огромную силу, вы убиваете врагов взглядом."
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3v44"]
+size = Vector3(0.7, 0.0338252, 0.4)
+
 [node name="Main" type="Node"]
 script = ExtResource("1_obpee")
 
@@ -175,7 +179,10 @@ hand_marker = NodePath("../../../HandMarker3D")
 deck = NodePath("../../../Deck")
 monitor = NodePath("../../../../PC")
 
-[node name="GrabFlopDisk2" type="Node" parent="World/Controller/Turn"]
+[node name="PutFloppyDisk" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
+script = ExtResource("8_ber8l")
+hand_marker = NodePath("../../../HandMarker3D")
+deck = NodePath("../../../Deck")
 
 [node name="MonitorState" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("camera", "monitor")]
 script = ExtResource("8_igydc")
@@ -202,9 +209,18 @@ item = SubResource("Resource_brqcw")
 
 [node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
+[node name="DeckArea3D" type="Area3D" parent="World/Deck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.408512, -1.3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Deck/DeckArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.0159126, 0)
+shape = SubResource("BoxShape3D_y3v44")
+
+[node name="Monitor" type="Node3D" parent="World"]
+
 [node name="HandMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.56834, -0.257453, -0.781478, 0.0195148, 0.953736, -0.30001, 0.822563, 0.155258, 0.547071, -0.4, 0.5, -1.6)
 gizmo_extents = 0.1
 
 [node name="PC" parent="." instance=ExtResource("12_u08xi")]
-transform = Transform3D(-0.997603, 0, 0.0691992, 0, 1, 0, -0.0691992, 0, -0.997603, 0.949247, 0, -0.151361)
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
