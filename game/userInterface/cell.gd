@@ -14,6 +14,10 @@ enum CellType {
 	LEGS
 }
 
+func _process(delta) -> void:
+	if has_focus():
+		print(self)
+
 func change_item(new_item: Item) -> void:
 	if new_item.cell != current_cell_type:
 		return

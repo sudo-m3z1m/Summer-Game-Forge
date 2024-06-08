@@ -16,7 +16,6 @@ func enter(object: Object, state_machine: StateMachine):
 	get_tree().create_tween().tween_property(disk, "global_rotation", hand_marker.global_rotation, grab_time).set_ease(Tween.EASE_OUT)
 	#disk.look_at(disk.to_local(get_viewport().get_camera_3d().global_position))
 	#disk.get_child(0).rotation.y = PI/2
-	
 	monitor.display_item_description(disk.item)
 	
 	await get_tree().create_timer(grab_time).timeout

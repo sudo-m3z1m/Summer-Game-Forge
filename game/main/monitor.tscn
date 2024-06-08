@@ -1,4 +1,3 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpgrytes3wmk"]
 [gd_scene load_steps=13 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
