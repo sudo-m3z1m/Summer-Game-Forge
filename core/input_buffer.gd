@@ -4,10 +4,11 @@ var action_callables = {
 	#"right": "",
 	#"left": "",
 	#"jump": "",
+	"right_mouse": ""
 }
 
 var _input_buffer: Array[String]
-var _buffer_save_inputs_time: float = 0.05
+var _buffer_save_inputs_time: float = 1.0
 
 func _input(event):
 	if event.is_action_type():

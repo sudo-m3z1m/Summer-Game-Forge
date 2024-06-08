@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=34 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
+[ext_resource type="PackedScene" uid="uid://bv6wunhdbhy0r" path="res://assets/Projector/P1.glb" id="5_p3p2s"]
 [ext_resource type="Script" path="res://game/main/controller/grab_floppy_disk.gd" id="6_ebyv6"]
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk.gd" id="8_ber8l"]
@@ -17,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/Items/item.gd" id="12_0lehm"]
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
+[ext_resource type="PackedScene" uid="uid://bsg3eebpbtt7w" path="res://assets/Enemies/E_1.glb" id="18_fxpmd"]
+[ext_resource type="PackedScene" uid="uid://dnpcsb6sibnjr" path="res://assets/Enemies/E_2.glb" id="19_yk3os"]
+[ext_resource type="PackedScene" uid="uid://d3l6dj8vbvnlf" path="res://assets/Enemies/E_3.glb" id="20_57xr6"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -87,6 +91,43 @@ item_property = "Всегда сдавливает голову, но даёт �
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3v44"]
 size = Vector3(0.737375, 0.260959, 0.0490021)
 
+[sub_resource type="GDScript" id="GDScript_hbolx"]
+resource_name = "disk_rotating"
+script/source = "extends Marker3D
+
+@onready var original_position = global_position
+var original_disk_rotation: Vector3 = Vector3(0, 0, deg_to_rad(15))
+var last_rotate_time: int = 0
+func _input(event):
+	if not get_child_count(): return
+	
+	if Input.is_action_pressed(\"right_mouse\"):
+		if event is InputEventMouseMotion:
+			get_child(0).rotation.y += -event.relative.x * 0.02
+			get_child(0).rotation.x += -event.relative.y * 0.02
+			last_rotate_time = Time.get_ticks_msec()
+			
+@onready var camera = $\"../Camera3D\"
+@onready var eyes_marker_3d = $\"../EyesMarker3D\"
+func _process(delta):
+	if not get_child_count(): return
+	
+	if (Time.get_ticks_msec() - last_rotate_time) / 1000.0 > .5:
+		get_child(0).global_rotation = lerp(get_child(0).global_rotation, original_disk_rotation, delta * 4.0)
+	
+	if Input.is_action_just_pressed(\"right_mouse\"):
+		get_tree().create_tween().tween_property(self, \"global_position\", eyes_marker_3d.global_position, .2).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property(self, \"global_rotation\", eyes_marker_3d.global_rotation, .2).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property(camera, \"fov\", 25.0, .2).set_trans(Tween.TRANS_CUBIC)
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	if Input.is_action_just_released(\"right_mouse\"):
+		get_tree().create_tween().tween_property(self, \"global_position\", original_position, .2).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property(self, \"global_rotation\", original_disk_rotation, .2).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property(camera, \"fov\", 60.0, .2).set_trans(Tween.TRANS_CUBIC)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+"
+
 [node name="Main" type="Node"]
 script = ExtResource("1_obpee")
 
@@ -101,6 +142,32 @@ table = NodePath("../World/Table")
 
 [node name="T_2" parent="World" instance=ExtResource("4_rjcnj")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.802, 0.016, -1.415)
+
+[node name="Projector" parent="World" instance=ExtResource("5_p3p2s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.059, -0.435, 0)
+
+[node name="Cylinder_001" parent="World/Projector" index="0"]
+transform = Transform3D(0.322468, 0, -0.0837521, 0, 0.0444814, 0, 0.0837521, 0, 0.322468, 1.14623, 2.22594, -0.280852)
+cast_shadow = 0
+
+[node name="Cube_002" parent="World/Projector" index="1"]
+transform = Transform3D(0.210969, 0, -0.0547933, 0, 0.568464, 0, 0.0547933, 0, 0.210969, 0.804436, 2.2741, -0.420119)
+cast_shadow = 0
+
+[node name="Cube_003" parent="World/Projector" index="2"]
+cast_shadow = 0
+
+[node name="Cylinder_002" parent="World/Projector" index="3"]
+transform = Transform3D(-0.101682, 0, -0.317271, 0, 0.071846, 0, 0.317271, 0, -0.101682, 1.14623, 2.34594, -0.280852)
+cast_shadow = 0
+
+[node name="Structure_HEA_PlayerShip_v4_NearProxy_002" parent="World/Projector" index="4"]
+transform = Transform3D(0.377441, 0.0418787, -0.515554, 0.0328179, -0.638872, -0.0278696, -0.51621, -0.0099954, -0.378733, 0.394311, 3.85529, -1.40854)
+cast_shadow = 0
+
+[node name="Cylinder_003" parent="World/Projector" index="5"]
+transform = Transform3D(0.381157, 0, 0.00669769, 0, 0.0378669, 0, -0.00669769, 0, 0.381157, 1.14623, 2.24174, -0.280852)
+cast_shadow = 0
 
 [node name="GraphicsAndLIght" type="Node3D" parent="World"]
 
@@ -163,11 +230,13 @@ script = ExtResource("6_ebyv6")
 hand_marker = NodePath("../../../HandMarker3D")
 deck = NodePath("../../../Deck")
 monitor = NodePath("../../../../PC")
+grab_time = 0.2
 
 [node name="PutFloppyDisk" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
 script = ExtResource("8_ber8l")
 hand_marker = NodePath("../../../HandMarker3D")
 deck = NodePath("../../../Deck")
+put_time = 0.2
 
 [node name="MonitorState" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("camera", "monitor")]
 script = ExtResource("8_igydc")
@@ -210,6 +279,21 @@ shape = SubResource("BoxShape3D_y3v44")
 [node name="HandMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -0.2, 0.5, -1.7)
 gizmo_extents = 0.1
+script = SubResource("GDScript_hbolx")
+
+[node name="EyesMarker3D" type="Marker3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -1.7)
+gizmo_extents = 0.1
+script = SubResource("GDScript_hbolx")
 
 [node name="PC" parent="." instance=ExtResource("12_u08xi")]
 transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
+
+[node name="E_1" parent="." instance=ExtResource("18_fxpmd")]
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 3.64166, -0.627827, -1.31613)
+
+[node name="E_2" parent="E_1" instance=ExtResource("19_yk3os")]
+
+[node name="E_3" parent="E_1" instance=ExtResource("20_57xr6")]
+
+[editable path="World/Projector"]

@@ -44,7 +44,7 @@ func animate_camera(to_monitor: bool = true) -> void:
 		angle_node.global_position = camera.global_position
 		angle_node.look_at(monitor.camera_marker.global_position)
 		tween.tween_property(camera, "rotation", angle_node.rotation, .3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(camera, "fov", 15, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(camera, "fov", 20, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	else:
 		tween.tween_property(camera, "fov", default_camera_fov, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(camera, "rotation", default_camera_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
