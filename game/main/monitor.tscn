@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=11 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
@@ -16,6 +16,8 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iufki"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_8w3ig")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6rv3"]
 
 [node name="PC" instance=ExtResource("1_1x2hh")]
 script = ExtResource("2_doy1v")
@@ -38,6 +40,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iufki")
 
 [node name="Cube_006" parent="." index="4"]
 visible = false
+
+[node name="Cube_013" parent="." index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
 
 [node name="SubViewport" type="SubViewport" parent="." index="11"]
 size = Vector2i(800, 640)

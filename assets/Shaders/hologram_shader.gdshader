@@ -1,45 +1,38 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, shadows_disabled, world_vertex_coords; 
+#include "funcs.gdshaderinc" 
+uniform vec3 color: source_color;
+uniform float lines1:hint_range(0.0, 200.0,1.0) = 2.0;
+uniform float lines2:hint_range(0.0, 100.0,1.0) = 2.0;
+uniform float _emission:hint_range(0.0,10.0) = 1.0;
+uniform  float _frensel:hint_range(0.0,10.0) = 1.0;
 
-uniform sampler2D texture_image;
+varying float rand_dist;
 
-uniform mediump vec4 line_color: source_color = vec4(0.0, 0.0, 1.0, 1.0);
-uniform mediump float line_width : hint_range(0, 1) = 0.005;
-uniform mediump float line_blur : hint_range(0, 1) = 0.2;
-uniform mediump float line_speed : hint_range(-1, 1) = 0.02;
-uniform  bool straight_lines = true;
-
-uniform mediump float interrupt_width : hint_range(0, 1) = 0.5;
-uniform mediump float interrupt_blur : hint_range(0, 1) = 0.25;
-uniform mediump float interrupt_speed : hint_range(-1, 1) = 0.2;
-
-uniform mediump vec4 glow_color : source_color = vec4(0.5, 0.75, 1.0, 1.0);
-uniform lowp float glow_itensity : hint_range(0, 20) = 4.5;
-uniform lowp float glow_amount : hint_range(0, 20) = 4.5;
-uniform lowp float flickering : hint_range(0, 1) = 0.55;
-
-vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 view) {
-	return pow((1.0 - dot(normalize(normal), normalize(view))), amount) * color * intensity;
+void vertex(){
+	float distortion = sin(TIME*10.0 + VERTEX.y*20.0)*0.04;
+	float rand_time = random(TIME);
+	float rand_distortion = step(rand_time, 0.05);
+	
+	VERTEX.x += distortion*rand_distortion;
 }
 
-void fragment () {
-	vec2 canvas;
-	if (straight_lines) {
-			canvas = SCREEN_UV;
-	} else {
-		canvas = vec2(VIEW.x, VIEW.y);
-	}
-	vec2 lines = vec2(clamp(sin((TIME * line_speed + canvas.y) / line_width), line_blur, 1.0 - line_blur), canvas.x);
-	vec2 interupts = vec2(clamp(sin((TIME * interrupt_speed + canvas.y) / interrupt_width * 3.0), interrupt_blur, 1.0 - interrupt_blur), canvas.x);
+void fragment(){
+	float n = random2_1(SCREEN_UV);
+	float f = fresnel(_frensel,NORMAL, VIEW);
 	
-	float flicker = clamp(fract(cos(TIME) * 43758.5453123), flickering, 1.0);
-	vec4 imgtex = flicker * line_color * texture(texture_image, lines * interupts);
-	vec3 imgtex_color = vec3(imgtex.r, imgtex.g, imgtex.b);
-	vec3 fresnel_color = vec3(glow_color.r, glow_color.g, glow_color.b);
-	vec3 fresnel = fresnel_glow(glow_amount, glow_itensity, fresnel_color, NORMAL, VIEW);
-	ALBEDO = imgtex_color + fresnel;
+	vec2 igrid = floor(SCREEN_UV * lines1)/lines1;
+	float li = mod(igrid.y,2.0);
+	li = mix (0.4,1.0,li);
 	
-	//ALBEDO = vec3(imgtex.r, imgtex.g, imgtex.b);
-	EMISSION = glow_amount * vec3(glow_color.r, glow_color.g, glow_color.b);
-	ALPHA = lines.x * interupts.x;
+	vec2 uv2 = SCREEN_UV;
+	uv2.y -= TIME * 0.6; 
+	vec2 igrid2 = floor(uv2*lines2);
+	float l2 = random(igrid2.y);
+	l2 = step(0.2, l2);
+	l2 = mix(0.2,1.0, l2);
+	
+	float m = f*n*li*l2;
+	ALPHA = m;	
+	ALBEDO = color * mix(_emission, _emission+5.0,rand_dist);
 }
