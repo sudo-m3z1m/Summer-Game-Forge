@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=10 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
-[ext_resource type="PackedScene" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
+[ext_resource type="PackedScene" uid="uid://ban0msdyd8unm" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
+[ext_resource type="PackedScene" uid="uid://bn47o678qcmyq" path="res://game/userInterface/inventory_hud.tscn" id="6_3i1gx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xd3jc"]
 size = Vector3(0.529358, 0.468994, 0.350342)
@@ -57,6 +58,11 @@ layout_mode = 1
 
 [node name="Reviews" parent="SubViewport/MonitorHud" index="1" instance=ExtResource("3_ri7o6")]
 unique_name_in_owner = true
+layout_mode = 1
+
+[node name="InventoryHud" parent="SubViewport/MonitorHud" index="2" instance=ExtResource("6_3i1gx")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]

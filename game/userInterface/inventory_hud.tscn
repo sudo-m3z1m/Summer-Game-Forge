@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn47o678qcmyq"]
+[gd_scene load_steps=8 format=3 uid="uid://bn47o678qcmyq"]
 
 [ext_resource type="FontFile" uid="uid://dtfprycdg5rj8" path="res://assets/Fonts/vcrosdmonorusbyd.ttf" id="1_15ave"]
 [ext_resource type="Script" path="res://game/userInterface/inventory_hud.gd" id="1_c7exy"]
@@ -22,6 +22,162 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 shadow_color = Color(0, 0, 0, 0.27451)
 shadow_size = 10
+
+[sub_resource type="Animation" id="Animation_u3oc6"]
+resource_name = "AppearAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Panel/VBoxContainer/InventoryLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ux3o1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Panel/VBoxContainer/InventoryLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah0ko"]
+_data = {
+"AppearAnimation": SubResource("Animation_u3oc6"),
+"RESET": SubResource("Animation_ux3o1")
+}
 
 [node name="InventoryHud" type="Control"]
 layout_mode = 3
@@ -60,6 +216,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_15ave")
 text = "Инвентарь"
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
@@ -75,8 +233,8 @@ layout_mode = 2
 alignment = 1
 
 [node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/HBoxContainer" instance=ExtResource("3_sm50g")]
+visible = false
 layout_mode = 2
-current_cell_type = null
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer2"]
 layout_mode = 2
@@ -87,16 +245,16 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+visible = false
 layout_mode = 2
-current_cell_type = null
 
 [node name="Cell2" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+visible = false
 layout_mode = 2
-current_cell_type = null
 
 [node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+visible = false
 layout_mode = 2
-current_cell_type = null
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -104,5 +262,10 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("3_sm50g")]
+visible = false
 layout_mode = 2
-current_cell_type = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ah0ko")
+}

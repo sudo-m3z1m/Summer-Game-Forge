@@ -17,9 +17,6 @@ enum CellType {
 func change_item(new_item: Item) -> void:
 	if new_item.cell != current_cell_type:
 		return
-	if !(current_item):
-		current_item = new_item
-		return
 	current_item.break_item()
 	current_item = new_item
 	return
