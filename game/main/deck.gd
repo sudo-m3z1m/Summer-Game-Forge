@@ -21,6 +21,6 @@ func get_disk_index(disk: FloppyDisk):
 	return disks.find(disk)
 
 func get_selected():
-	for disk in disks_container:
+	for disk in disks_container.get_children():
 		if disk.is_selected:
 			return disk

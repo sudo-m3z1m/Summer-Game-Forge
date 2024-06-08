@@ -8,8 +8,9 @@ func enter(object: Object, state_machine: StateMachine):
 	var disk = deck.get_selected()
 	disk.reparent(hand_marker)
 	get_tree().create_tween().tween_property(disk, "global_position", hand_marker.global_position, 0.5)
-	get_tree().create_tween().tween_property(disk, "global_rotation", hand_marker.global_rotation, 0.5)
-	hand_marker.global_position
+	disk.look_at(disk.to_local(get_viewport().get_camera_3d().global_position))
+	disk.get_child(0).rotation.y = 90
+	#hand_marker.global_position
 
 func update(delta: float):
 	super(delta)

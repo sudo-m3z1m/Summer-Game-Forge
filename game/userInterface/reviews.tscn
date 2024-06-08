@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ban0msdyd8unm"]
+[gd_scene load_steps=5 format=3 uid="uid://5dfrqve261xx"]
 
 [ext_resource type="Script" path="res://game/userInterface/reviews.gd" id="1_j4un7"]
 [ext_resource type="FontFile" uid="uid://dtfprycdg5rj8" path="res://assets/Fonts/vcrosdmonorusbyd.ttf" id="1_k7ipl"]

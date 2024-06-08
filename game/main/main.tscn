@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
-[ext_resource type="PackedScene" path="res://game/main/table.tscn" id="4_vweva"]
+[ext_resource type="PackedScene" uid="uid://csawkuvkki2bh" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
 [ext_resource type="Script" path="res://game/main/grab_floppy_disk.gd" id="6_ebyv6"]
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
-[ext_resource type="PackedScene" uid="uid://bm5d1mj11vs8i" path="res://game/Disks/floppy_disc.tscn" id="7_w047m"]
 [ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="10_np8uh"]
+[ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 
 [sub_resource type="Environment" id="Environment_yrohi"]
 background_mode = 1
@@ -178,11 +178,11 @@ script = ExtResource("6_vxhaq")
 is_onecolumn = false
 disks_in_column = 4
 
-[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
-[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
-[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("7_w047m")]
+[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
 
 [node name="PC" parent="World" instance=ExtResource("10_np8uh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
@@ -191,6 +191,4 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 
 
 [node name="HandMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.56834, -0.257453, -0.781478, 0.0195148, 0.953736, -0.30001, 0.822563, 0.155258, 0.547071, -0.4, 0.5, -1.6)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="World/HandMarker3D"]
-size = Vector3(0.05, 0.05, 0.05)
+gizmo_extents = 0.1
