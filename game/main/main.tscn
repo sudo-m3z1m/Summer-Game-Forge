@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://c2fup3v41tkqa"]
+[gd_scene load_steps=26 format=3 uid="uid://c2fup3v41tkqa"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
+[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
+[ext_resource type="PackedScene" uid="uid://8khdyqgkr1ft" path="res://assets/Pipes/T_2.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
@@ -13,27 +15,6 @@
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk.gd" id="8_ber8l"]
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
-
-[sub_resource type="Environment" id="Environment_yrohi"]
-background_mode = 1
-background_color = Color(0.178395, 0.150182, 0.22173, 1)
-ambient_light_source = 1
-reflected_light_source = 1
-tonemap_mode = 1
-tonemap_exposure = 0.5
-tonemap_white = 0.65
-ssao_enabled = true
-ssao_intensity = 3.0
-ssil_enabled = true
-ssil_radius = 0.5
-ssil_intensity = 0.37
-ssil_sharpness = 0.0
-sdfgi_enabled = true
-sdfgi_y_scale = 0
-sdfgi_energy = 1.2
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_anisotropy = 0.9
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -108,10 +89,13 @@ table = NodePath("../World/Table")
 
 [node name="World" type="Node3D" parent="."]
 
+[node name="T_2" parent="World" instance=ExtResource("4_rjcnj")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.802, 0.016, -1.415)
+
 [node name="GraphicsAndLIght" type="Node3D" parent="World"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World/GraphicsAndLIght"]
-environment = SubResource("Environment_yrohi")
+environment = ExtResource("4_br2iy")
 
 [node name="FogVolume" type="FogVolume" parent="World/GraphicsAndLIght"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1116, 0)
@@ -148,6 +132,7 @@ mesh = SubResource("PlaneMesh_d41xa")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(-1, -7.80033e-14, -8.74228e-08, -1.21035e-08, 0.99037, 0.138447, 8.65809e-08, 0.138447, -0.99037, 0, 0.81, -2.2253)
+current = true
 fov = 60.0
 
 [node name="Controller" type="Node" parent="World"]
@@ -180,7 +165,7 @@ deck = NodePath("../../../Deck")
 script = ExtResource("5_bocpp")
 
 [node name="DisksContainer" type="Node3D" parent="World/Deck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148775, 0.466678, -1.48293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.467, -1.7)
 script = ExtResource("6_vxhaq")
 is_onecolumn = false
 disks_in_column = 4

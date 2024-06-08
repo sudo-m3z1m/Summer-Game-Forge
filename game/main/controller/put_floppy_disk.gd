@@ -8,7 +8,7 @@ extends State
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
 	var disk = hand_marker.get_child(0)
-	get_tree().create_tween().tween_property(disk, "global_position", deck.disks_container.global_position, put_time)
+	get_tree().create_tween().tween_property(disk, "global_position", deck.disks_container.to_global(deck.disks_container.get_disk_position(deck.disks_container.get_child_count())), put_time)
 	get_tree().create_tween().tween_property(disk, "global_rotation", Vector3(), put_time)
 	get_tree().create_tween().tween_property(disk.get_child(0), "rotation:y", 0, put_time)
 	await get_tree().create_timer(put_time).timeout

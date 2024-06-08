@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
-[ext_resource type="PackedScene" uid="uid://ban0msdyd8unm" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
+[ext_resource type="PackedScene" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8w3ig"]
 viewport_path = NodePath("SubViewport")
