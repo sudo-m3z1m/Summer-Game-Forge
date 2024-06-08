@@ -7,7 +7,7 @@ class_name FloppyDisk
 
 @onready var model: Node3D = $Model
 
-#func place_item(item_cell: Item.ItemCell, inventory_cell: InventoryCell) -> void:
+#func place_item(item_cell: Item.CellType, inventory_cell: InventoryCell) -> void:
 	#if !item.item_can_be_placed(inventory_cell):
 		#return
 	#inventory_cell.put_item() #TODO need to make uncomment this after creating inventory class with cells
