@@ -15,7 +15,7 @@ func update(delta: float):
 	super(delta)
 	
 	var mouse_position = get_viewport().get_mouse_position()
-	var point = state_machine.state_machine.get_world_point(mouse_position)
+	var point = state_machine.state_machine.state_machine.get_world_point(mouse_position)
 	var collider = point.get("collider")
 	
 	if collider is FloppyDisk:

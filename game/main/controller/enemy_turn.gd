@@ -1,10 +1,12 @@
 extends StateMachineState
 
-@onready var game_manager = $"../../../GameManager"
+@onready var game_manager = $"../../../../GameManager"
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
-	await game_manager._enemy_turn()
+	#TODO с эфейтом всё таки ждать атаки всех противников поочереди
+	game_manager._enemy_turn()
+	try_transition("Turn")
 
 func update(delta: float):
 	super(delta)

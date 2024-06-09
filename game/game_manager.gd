@@ -40,7 +40,6 @@ var levels_parameters: Dictionary = {
 	}
 }
 
-#TODO ALL
 func player_confirm_turn():
 	pass
 

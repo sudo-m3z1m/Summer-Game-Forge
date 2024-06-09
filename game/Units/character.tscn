@@ -19,6 +19,6 @@ transform = Transform3D(0.996725, 0.00217048, -0.0775374, -0.014935, -0.0840769,
 
 [node name="HealthComponent" parent="." index="1" node_paths=PackedStringArray("model")]
 model = NodePath("../Mc_1")
-max_damage_take_height = 1.0
+max_damage_take_height = 0.025
 
 [editable path="Mc_1"]
