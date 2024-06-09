@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8odsmo7j7qtr"]
+
+[ext_resource type="PackedScene" uid="uid://bgucdb0aijt84" path="res://assets/FloppyDisk/D_1glb.glb" id="1_82qpw"]
+[ext_resource type="Texture2D" uid="uid://c4bjhryyfj72h" path="res://assets/FloppyDisk/D_1glb_stickers4.webp" id="2_emtpr"]
+[ext_resource type="Texture2D" uid="uid://fa0e1gwt86v7" path="res://assets/FloppyDisk/D_1glb_stickers3.png" id="3_rcg7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5s6t"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_emtpr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1hvg"]
+resource_name = "Material.010"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_rcg7d")
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tv02n"]
+resource_name = "Material.004"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_emtpr")
+metallic = 0.440367
+roughness = 0.5
+
+[node name="FirstDiskModel" instance=ExtResource("1_82qpw")]
+
+[node name="Plane" parent="." index="1"]
+transform = Transform3D(0.736287, 2.05123e-08, 0.335186, 0.335186, -9.4566e-08, -0.736287, 2.05123e-08, 0.808992, -9.4566e-08, -0.760864, -0.436293, 0.04798)
+surface_material_override/0 = SubResource("StandardMaterial3D_m5s6t")
+
+[node name="Plane_001" parent="." index="2"]
+transform = Transform3D(0.978108, 3.28333e-10, 0.0565802, 0.159761, -4.04696e-09, -0.346403, 5.66566e-10, 0.57434, -2.4732e-09, 0.491778, 0.0859926, 0.0503078)
+surface_material_override/0 = SubResource("StandardMaterial3D_a1hvg")
+
+[node name="Plane_003" parent="." index="3"]
+transform = Transform3D(-0.684476, -3.57541e-07, -0.431232, 0.431232, 1.86778e-07, -0.684476, 4.02072e-07, -0.808992, 3.25571e-08, 0.865294, -1.0357, 0.0479799)
+surface_material_override/0 = SubResource("StandardMaterial3D_tv02n")
