@@ -16,8 +16,11 @@ func attack(target: Node3D) -> void:
 	var target_health_component: HealthComponent = target.get_node("HealthComponent")
 	target_health_component.damage(attack_resource)
 
+func play_idle_animation() -> void:
+	animation_player.play(idle_animations[randi() % idle_animations.size()])
+
 func animation_finished(anim_name: StringName):
 	for animation in idle_animations:
 		if !(animation == anim_name):
 			continue
-		animation_player.play(idle_animations[randi() % idle_animations.size()])
+		play_idle_animation()
