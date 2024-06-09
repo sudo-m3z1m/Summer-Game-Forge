@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://c0drdpfevl7np"]
+
+[ext_resource type="Texture2D" uid="uid://jdwnnuq87shh" path="res://icon.png" id="1_3c4ai"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="2_752aj"]
+[ext_resource type="Script" path="res://game/Items/item.gd" id="2_75263"]
+[ext_resource type="Script" path="res://core/damage_components/item_effect.gd" id="3_t1kp8"]
+
+[sub_resource type="Resource" id="Resource_i4c3m"]
+script = ExtResource("2_752aj")
+damage = 2
+
+[sub_resource type="Resource" id="Resource_kb7h3"]
+script = ExtResource("3_t1kp8")
+attack = SubResource("Resource_i4c3m")
+
+[resource]
+script = ExtResource("2_75263")
+durability = 1
+cell = 0
+item_effect = SubResource("Resource_kb7h3")
+image = ExtResource("1_3c4ai")
+item_name = "Шлем - тиски"
+item_description = "История этого шлема уникальна, появился этот шлем, когда Ханма Юдзиро решил доказать президенту Северной Кореи, что его сила превосходит всякое оружие. Действительно уникальное сокровище"
+item_property = "Всегда сдавливает голову, но даёт огромную силу, вы убиваете врагов взглядом."

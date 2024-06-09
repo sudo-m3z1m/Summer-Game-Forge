@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnjqfevab2152"]
+
+[ext_resource type="PackedScene" uid="uid://d4i0anh63ko8d" path="res://game/Units/table_unit.tscn" id="1_njr4o"]
+[ext_resource type="Script" path="res://game/Units/enemy.gd" id="2_s71x3"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="3_a7y0h"]
+[ext_resource type="Script" path="res://game/Units/Enemies/enemy_health_component.gd" id="4_0ebkr"]
+
+[sub_resource type="Resource" id="Resource_801va"]
+script = ExtResource("3_a7y0h")
+damage = 1
+
+[node name="Enemy" instance=ExtResource("1_njr4o")]
+script = ExtResource("2_s71x3")
+attack_resource = SubResource("Resource_801va")
+idle_animations = Array[String]([])
+
+[node name="HealthComponent" parent="." index="0"]
+script = ExtResource("4_0ebkr")

@@ -1,0 +1,22 @@
+[gd_resource type="Environment" format=3 uid="uid://yglthi40nyny"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.178395, 0.150182, 0.22173, 1)
+ambient_light_source = 1
+reflected_light_source = 1
+tonemap_mode = 3
+tonemap_exposure = 0.5
+tonemap_white = 0.65
+ssao_enabled = true
+ssao_intensity = 3.0
+ssil_enabled = true
+ssil_radius = 0.5
+ssil_intensity = 0.37
+ssil_sharpness = 0.0
+sdfgi_y_scale = 0
+sdfgi_energy = 1.2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_anisotropy = 0.9

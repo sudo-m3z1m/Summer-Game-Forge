@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjlxnio74o06"]
+
+[ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="1_t32nd"]
+[ext_resource type="PackedScene" uid="uid://jtbmqblckljm" path="res://assets/Levels/L_4.glb" id="2_vqni0"]
+[ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="3_f25j5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
+render_priority = 0
+shader = ExtResource("3_f25j5")
+shader_parameter/color = Color(0.195173, 0.483065, 0.638384, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukd75"]
+render_priority = 0
+shader = ExtResource("3_f25j5")
+shader_parameter/color = Color(0.572549, 0.901961, 1, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ctle"]
+render_priority = 0
+shader = ExtResource("3_f25j5")
+shader_parameter/color = Color(0.611765, 0.729412, 1, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u851g"]
+render_priority = 0
+shader = ExtResource("3_f25j5")
+shader_parameter/color = Color(0.175777, 0.629635, 1, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[node name="TableLevel" instance=ExtResource("1_t32nd")]
+
+[node name="L_4" parent="." index="0" instance=ExtResource("2_vqni0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.348, 0.38, 0)
+
+[node name="Cylinder_021" parent="L_4" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cube_024" parent="L_4" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_012" parent="L_4" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_009" parent="L_4" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_010" parent="L_4" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_011" parent="L_4" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cylinder_020" parent="L_4" index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cylinder_022" parent="L_4" index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_5ctle")
+
+[node name="Cylinder_024" parent="L_4" index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[node name="Cylinder_025" parent="L_4" index="9"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[editable path="L_4"]

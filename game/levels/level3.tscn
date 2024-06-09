@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvd87r4h43ftr"]
+
+[ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="1_3psva"]
+[ext_resource type="PackedScene" uid="uid://b3846n46sigol" path="res://assets/Levels/L_3.glb" id="2_nmuit"]
+[ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="3_ci03t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ctle"]
+render_priority = 0
+shader = ExtResource("3_ci03t")
+shader_parameter/color = Color(0.336985, 0.682803, 0.884139, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u851g"]
+render_priority = 0
+shader = ExtResource("3_ci03t")
+shader_parameter/color = Color(0.529052, 0.770885, 0.912426, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukd75"]
+render_priority = 0
+shader = ExtResource("3_ci03t")
+shader_parameter/color = Color(0.572549, 0.901961, 1, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
+render_priority = 0
+shader = ExtResource("3_ci03t")
+shader_parameter/color = Color(0.263483, 0.693657, 0.756301, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t48ls"]
+render_priority = 0
+shader = ExtResource("3_ci03t")
+shader_parameter/color = Color(0.780392, 0.764706, 0, 1)
+shader_parameter/lines1 = 2.0
+shader_parameter/lines2 = 2.0
+shader_parameter/_emission = 10.0
+shader_parameter/_frensel = 1.0
+
+[node name="TableLevel" instance=ExtResource("1_3psva")]
+
+[node name="L_3" parent="." index="0" instance=ExtResource("2_nmuit")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.722, 0.38, 0)
+
+[node name="Cylinder" parent="L_3" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_5ctle")
+
+[node name="Cylinder_007" parent="L_3" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[node name="Cylinder_008" parent="L_3" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[node name="Cylinder_010" parent="L_3" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_5ctle")
+
+[node name="Cylinder_011" parent="L_3" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[node name="Cube_025" parent="L_3" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_026" parent="L_3" index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cube_027" parent="L_3" index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cube_030" parent="L_3" index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cylinder_012" parent="L_3" index="9"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube" parent="L_3" index="10"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_003" parent="L_3" index="11"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cylinder_013" parent="L_3" index="12"]
+surface_material_override/0 = SubResource("ShaderMaterial_u851g")
+
+[node name="Cylinder_014" parent="L_3" index="13"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Icosphere_003" parent="L_3" index="14"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Icosphere_004" parent="L_3" index="15"]
+surface_material_override/0 = SubResource("ShaderMaterial_t48ls")
+
+[editable path="L_3"]

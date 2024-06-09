@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgebrvbe4tbx0"]
+
+[ext_resource type="Script" path="res://game/Disks/floppy_disk.gd" id="1_rb6wb"]
+[ext_resource type="Texture2D" uid="uid://c751rrpdp0jq8" path="res://assets/Sprites/Icon1.png" id="2_31fqy"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="2_pi172"]
+[ext_resource type="PackedScene" uid="uid://cr73ybuxffisf" path="res://assets/FloppyDisk/second_disk_model.tscn" id="2_qipsp"]
+[ext_resource type="Script" path="res://core/damage_components/item_effect.gd" id="3_0werg"]
+[ext_resource type="Script" path="res://game/Items/item.gd" id="4_hdsqq"]
+
+[sub_resource type="Resource" id="Resource_bhcno"]
+script = ExtResource("2_pi172")
+damage = 5
+
+[sub_resource type="Resource" id="Resource_f5fyp"]
+script = ExtResource("3_0werg")
+attack = SubResource("Resource_bhcno")
+
+[sub_resource type="Resource" id="Resource_vq3a4"]
+script = ExtResource("4_hdsqq")
+durability = 10
+cell = 0
+item_effect = SubResource("Resource_f5fyp")
+image = ExtResource("2_31fqy")
+item_name = "wasdwads"
+item_description = "dwads"
+item_property = "wasdwad"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j74kb"]
+size = Vector3(0.15, 0.02, 0.15)
+
+[node name="FloppyDisk" type="StaticBody3D"]
+script = ExtResource("1_rb6wb")
+item = SubResource("Resource_vq3a4")
+max_selection_height = 0.05
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="SecondDiskModel" parent="Model" instance=ExtResource("2_qipsp")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00630754, 0.0245788, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.98023e-08, -0.000499994, 2.98023e-08)
+shape = SubResource("BoxShape3D_j74kb")

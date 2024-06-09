@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4i0anh63ko8d"]
+
+[ext_resource type="Script" path="res://game/Units/unit.gd" id="1_1wmfc"]
+[ext_resource type="Script" path="res://core/damage_components/health_component.gd" id="1_mnnfy"]
+[ext_resource type="Script" path="res://game/Units/health_container.gd" id="3_spdy4"]
+
+[node name="TableUnit" type="Node3D"]
+script = ExtResource("1_1wmfc")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("model")]
+script = ExtResource("1_mnnfy")
+model = NodePath("../Model")
+health = 3
+max_damage_take_height = 0.3
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AngleHelper" type="Node3D" parent="Node"]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../Node/AngleHelper")
+
+[node name="HealthContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
+script = ExtResource("3_spdy4")
+offset = 0.05

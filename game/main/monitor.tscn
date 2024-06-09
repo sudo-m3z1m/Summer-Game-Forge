@@ -1,0 +1,193 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpgrytes3wmk"]
+
+[ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
+[ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
+[ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
+[ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
+[ext_resource type="PackedScene" uid="uid://ban0msdyd8unm" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
+[ext_resource type="PackedScene" uid="uid://bn47o678qcmyq" path="res://game/userInterface/inventory_hud.tscn" id="6_3i1gx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd3jc"]
+size = Vector3(0.529358, 0.468994, 0.350342)
+
+[sub_resource type="Shader" id="Shader_v0tva"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D viewport;
+uniform sampler2D noise;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 texture1 = texture(viewport, UV).rgb;
+	vec2 noise_uv = UV + cos(TIME) * 100.0f;
+	//noise_uv.y = UV.y;
+	vec3 texture2 = texture(noise, noise_uv).rgb;
+	ALBEDO = mix(texture1, texture2, 0.1);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hc7sg"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mn3h"]
+width = 48
+height = 64
+noise = SubResource("FastNoiseLite_hc7sg")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8w3ig"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqs0k"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_v0tva")
+shader_parameter/viewport = SubResource("ViewportTexture_8w3ig")
+shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
+
+[sub_resource type="Animation" id="Animation_s1e1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.93412, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_dicw8"]
+resource_name = "close_drive"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.59934e-08, 2.84351, -1.5708), Vector3(0, 5.93412, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_5jxeg"]
+resource_name = "open_drive"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 5.93412, -1.5708), Vector3(-4.59934e-08, 2.84351, -1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rtqm"]
+_data = {
+"RESET": SubResource("Animation_s1e1i"),
+"close_drive": SubResource("Animation_dicw8"),
+"open_drive": SubResource("Animation_5jxeg")
+}
+
+[node name="PC" instance=ExtResource("1_1x2hh")]
+script = ExtResource("2_doy1v")
+
+[node name="CameraMarker" type="Marker3D" parent="." index="0"]
+transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 0.623481, 0.702109, 1.14031)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 0.623481, 0.671708, 1.14031)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.999703, 0, 0.0243625, 0, 1, 0, -0.0243625, 0, 0.999703, -0.00992489, -0.0133057, -0.0116578)
+shape = SubResource("BoxShape3D_xd3jc")
+
+[node name="Cube_006" parent="." index="2"]
+visible = false
+
+[node name="Screen" parent="." index="3" instance=ExtResource("2_ft710")]
+
+[node name="Cube_006" parent="Screen" index="0"]
+transform = Transform3D(-0.204388, 1.14658e-08, 0.0336324, -1.94548e-08, -0.142799, 0, 0.0880234, -4.93796e-09, 0.0780935, 0.619805, 0.716637, 1.15985)
+material_override = SubResource("ShaderMaterial_lqs0k")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="11"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+handle_input_locally = false
+size = Vector2i(800, 640)
+size_2d_override = Vector2i(740, 645)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.548443, 0.812331, 0.945205, 1)
+
+[node name="MonitorHud" type="Control" parent="SubViewportContainer/SubViewport" index="1"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDescription" parent="SubViewportContainer/SubViewport/MonitorHud" index="0" instance=ExtResource("2_f0jec")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Reviews" parent="SubViewportContainer/SubViewport/MonitorHud" index="1" instance=ExtResource("3_ri7o6")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="InventoryHud" parent="SubViewportContainer/SubViewport/MonitorHud" index="2" node_paths=PackedStringArray("monitor") instance=ExtResource("6_3i1gx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+monitor = NodePath("../../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
+libraries = {
+"": SubResource("AnimationLibrary_3rtqm")
+}
+
+[node name="Cube_008" parent="." index="13"]
+transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="15"]
+transform = Transform3D(-0.923372, -0.194526, -0.330973, -0.32726, 0.849565, 0.413691, 0.20071, 0.490305, -0.848125, 0.638507, 0.728426, 1.17482)
+light_volumetric_fog_energy = 0.1
+spot_range = 0.763608
+spot_attenuation = 0.85
+spot_angle = 57.4168
+
+[editable path="Screen"]
