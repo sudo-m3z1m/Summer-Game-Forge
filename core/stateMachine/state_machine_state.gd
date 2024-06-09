@@ -21,3 +21,6 @@ func try_transition(state: String):
 
 func is_current():
 	return state_machine.state == self
+
+func _process(delta):
+	pass

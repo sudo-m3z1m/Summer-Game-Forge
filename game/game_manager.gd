@@ -55,6 +55,7 @@ func load_level():
 		var unit = get_enemy_unit()
 		table.spawn_unit(unit, marker) 
 	table.spawn_unit(preload("res://game/Units/character.tscn").instantiate(), table.player_marker)
+	
 
 func unload_level():
 	if table_level:

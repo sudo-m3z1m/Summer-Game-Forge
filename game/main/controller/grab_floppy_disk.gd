@@ -36,8 +36,8 @@ func update(delta: float):
 	if Input.is_action_just_pressed("left_mouse"):
 		if collider and collider.get_parent() is Deck:
 			try_transition("PutFloppyDisk")
-		if collider and collider.name == "DriveArea3D":
-			try_transition("PutFloppyDiskToDrive")
+		#if collider and collider.name == "DriveArea3D":
+			#try_transition("PutFloppyDiskToDrive")
 
 func exit():
 	pass

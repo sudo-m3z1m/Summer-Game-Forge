@@ -43,3 +43,5 @@ func update_inventory() -> void:
 
 func put_disk_to_drive() -> void:
 	game_manager.turn.transition_to("PutFloppyDiskToDrive")
+	
+	SoundManager.play3d(preload("res://assets/audios/on.mp3"), "Sfx").global_position = monitor.global_position
