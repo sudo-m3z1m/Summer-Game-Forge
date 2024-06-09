@@ -30,7 +30,7 @@ var enemies_packeds: Dictionary = {
 }
 
 var items_resources: Dictionary = {
-	Items.Test: preload("res://game/Items/test.tres"),
+	Items.Test: preload("res://game/Items/test_item.tres"),
 }
 
 var levels_parameters: Dictionary = {
