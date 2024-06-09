@@ -27,17 +27,17 @@ var enemies_packeds: Dictionary = {
 
 var levels_parameters: Dictionary = {
 	0: {
-		"enemies_count": 4,
-		"enemies": [Enemies.Swordsman],
+		"enemies_count": 1,
+		"enemies": [Enemies.Swordsman, Enemies.Archer],
 		"level": preload("res://game/levels/level1.tscn")
 	},
 	1: {
 		"enemies_count": 2,
-		"enemies": [Enemies.Swordsman, Enemies.Archer],
+		"enemies": [Enemies.Mage, Enemies.Archer],
 		"level": preload("res://game/levels/level1.tscn")
 	},
 	2: {
-		"enemies_count": 3,
+		"enemies_count": 4,
 		"enemies": [Enemies.Swordsman, Enemies.Archer, Enemies.Mage],
 		"level": preload("res://game/levels/level1.tscn")
 	}

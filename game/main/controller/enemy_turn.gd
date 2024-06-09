@@ -2,7 +2,7 @@ extends StateMachineState
 
 @onready var game_manager = $"../../../../GameManager"
 
-var enemies: Array[Unit]
+var enemies: Array[Node]
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
