@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
-[ext_resource type="Environment" path="res://assets/environment.tres" id="4_br2iy"]
+[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
-[ext_resource type="PackedScene" uid="uid://bmn2aqw7301ny" path="res://assets/Pipes/T_2.glb" id="4_rjcnj"]
+[ext_resource type="PackedScene" uid="uid://dpifvbouax5mo" path="res://assets/Pipes/Pipes.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
 [ext_resource type="Script" path="res://game/main/deck.gd" id="5_bocpp"]
 [ext_resource type="Script" path="res://game/main/controller/choosing_action.gd" id="5_egoav"]
@@ -144,11 +144,11 @@ script = ExtResource("1_pqany")
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("table", "inventory_hud")]
 script = ExtResource("3_0r2dt")
 table = NodePath("../World/Table")
-inventory_hud = NodePath("../PC/SubViewportContainer/SubViewport/MonitorHud/InventoryHud")
+inventory_hud = NodePath("../World/PC/SubViewportContainer/SubViewport/MonitorHud/InventoryHud")
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="T_2" parent="World" instance=ExtResource("4_rjcnj")]
+[node name="Pipes" parent="World" instance=ExtResource("4_rjcnj")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.802, 0.016, -1.415)
 
 [node name="Projector" parent="World" instance=ExtResource("5_p3p2s")]
@@ -212,6 +212,11 @@ spot_angle = 45.472
 transform = Transform3D(0.759476, 0.514129, -0.398583, 0.353478, 0.188218, 0.916312, 0.546123, -0.836807, -0.0387859, 0, 0, 0)
 light_color = Color(0.399896, 0.29546, 0.291643, 1)
 
+[node name="PC" parent="World" instance=ExtResource("12_u08xi")]
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860878)
+
+[node name="Table" parent="World" instance=ExtResource("4_vweva")]
+
 [node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
 mesh = SubResource("PlaneMesh_d41xa")
 
@@ -241,7 +246,7 @@ camera = NodePath("../../../../Camera3D")
 script = ExtResource("6_ebyv6")
 hand_marker = NodePath("../../../../HandMarker3D")
 deck = NodePath("../../../../Deck")
-monitor = NodePath("../../../../../PC")
+monitor = NodePath("../../../../PC")
 grab_time = 0.2
 
 [node name="PutFloppyDisk" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
@@ -254,12 +259,12 @@ put_time = 0.2
 script = ExtResource("12_nvcx1")
 hand_marker = NodePath("../../../../HandMarker3D")
 drive_marker = NodePath("../../../../DriveMarker3D")
-monitor = NodePath("../../../../../PC")
+monitor = NodePath("../../../../PC")
 
 [node name="MonitorState" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("camera", "monitor")]
 script = ExtResource("8_igydc")
 camera = NodePath("../../../../Camera3D")
-monitor = NodePath("../../../../../PC")
+monitor = NodePath("../../../../PC")
 
 [node name="AngleNode3D" type="Node3D" parent="World/Controller/Match/Turn/MonitorState"]
 
@@ -268,8 +273,6 @@ script = ExtResource("14_pfyf7")
 
 [node name="Disks" type="Node" parent="World/Controller"]
 script = ExtResource("16_ckhg7")
-
-[node name="Table" parent="World" instance=ExtResource("4_vweva")]
 
 [node name="Deck" type="Node" parent="World"]
 script = ExtResource("5_bocpp")
@@ -323,7 +326,7 @@ shape = SubResource("BoxShape3D_bnrqg")
 [node name="DriveMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.758367, 0.531987, -1.00474)
 
-[node name="PC" parent="." instance=ExtResource("12_u08xi")]
-transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
+[node name="Marker3D" type="Marker3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386421, 0.7, -1.29505)
 
 [editable path="World/Projector"]

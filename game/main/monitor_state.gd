@@ -36,15 +36,20 @@ func exit() -> void:
 
 func try_transition(state: String) -> void:
 	state_machine.transition_to(state)
-
+	
+@onready var main = owner
 func animate_camera(to_monitor: bool = true) -> void:
 	var tween: Tween = create_tween()
-	tween.set_parallel(false)
+	#var audio_tween = create_tween()
+	#audio_tween.set_parallel(false)
+	tween.set_parallel(true)
 	if to_monitor:
 		angle_node.global_position = camera.global_position
 		angle_node.look_at(monitor.camera_marker.global_position)
 		tween.tween_property(camera, "rotation", angle_node.rotation, .3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(camera, "fov", 20, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(main.monitor_player, "max_distance", 10.0, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	else:
 		tween.tween_property(camera, "fov", default_camera_fov, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(main.monitor_player, "max_distance", 4.0, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(camera, "rotation", default_camera_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)

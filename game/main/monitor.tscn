@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=17 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
@@ -12,6 +12,7 @@ size = Vector3(0.529358, 0.468994, 0.350342)
 
 [sub_resource type="Shader" id="Shader_v0tva"]
 code = "shader_type spatial;
+render_mode unshaded;
 
 uniform sampler2D viewport;
 uniform sampler2D noise;
@@ -51,8 +52,6 @@ render_priority = 0
 shader = SubResource("Shader_v0tva")
 shader_parameter/viewport = SubResource("ViewportTexture_8w3ig")
 shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6rv3"]
 
 [sub_resource type="Animation" id="Animation_s1e1i"]
 length = 0.001
@@ -121,20 +120,14 @@ transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 
 transform = Transform3D(0.999703, 0, 0.0243625, 0, 1, 0, -0.0243625, 0, 0.999703, -0.00992489, -0.0133057, -0.0116578)
 shape = SubResource("BoxShape3D_xd3jc")
 
+[node name="Cube_006" parent="." index="2"]
+visible = false
+
 [node name="Screen" parent="." index="3" instance=ExtResource("2_ft710")]
 
 [node name="Cube_006" parent="Screen" index="0"]
 transform = Transform3D(-0.204388, 1.14658e-08, 0.0336324, -1.94548e-08, -0.142799, 0, 0.0880234, -4.93796e-09, 0.0780935, 0.619805, 0.716637, 1.15985)
 material_override = SubResource("ShaderMaterial_lqs0k")
-
-[node name="Cube_006" parent="." index="4"]
-visible = false
-
-[node name="Cube_013" parent="." index="6"]
-surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
-
-[node name="Cube_008" parent="." index="10"]
-transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="11"]
 modulate = Color(1, 1, 1, 0)
@@ -183,5 +176,8 @@ layout_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_3rtqm")
 }
+
+[node name="Cube_008" parent="." index="13"]
+transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
 [editable path="Screen"]

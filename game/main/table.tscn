@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwv75iqj78td0"]
+[gd_scene load_steps=23 format=3 uid="uid://dwv75iqj78td0"]
 
 [ext_resource type="Script" path="res://game/main/table.gd" id="1_y6r52"]
+[ext_resource type="PackedScene" uid="uid://ce2pkrw5kbmuj" path="res://assets/Table/Table.glb" id="2_7s7ch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15w5"]
 
@@ -237,8 +238,18 @@ _data = {
 [node name="Table" type="Node3D"]
 script = ExtResource("1_y6r52")
 
+[node name="Table" parent="." instance=ExtResource("2_7s7ch")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
+
+[node name="Cube_023" parent="Table" index="4"]
+transform = Transform3D(0.838381, 0, 0, 0, 0.0469008, 0, 0, 0, 1.23466, 1.44363, 0.409251, 1.26013)
+
+[node name="Cube_019" parent="Table" index="5"]
+transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.24205, 1.43758, 0.409251, 1.26013)
+
 [node name="TableModel" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
+visible = false
 
 [node name="Cube" type="MeshInstance3D" parent="TableModel"]
 transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.57, 1.18387, 0.356465, 0.628566)
@@ -251,12 +262,12 @@ mesh = SubResource("ArrayMesh_kbtqj")
 skeleton = NodePath("")
 
 [node name="Cube_019" type="MeshInstance3D" parent="TableModel"]
-transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.24205, 1.43511, 0.409251, 1.26013)
+transform = Transform3D(0.854108, 0, 0, 0, 0.0469008, 0, 0, 0, 1.24205, 1.23758, 0.409251, 1.26013)
 mesh = SubResource("ArrayMesh_mb8g0")
 skeleton = NodePath("")
 
 [node name="Cube_023" type="MeshInstance3D" parent="TableModel"]
-transform = Transform3D(0.838381, 0, 7.84908e-08, 0, 0.0469008, 0, -5.32984e-08, 0, 1.23466, 1.44363, 0.409251, 1.26013)
+transform = Transform3D(0.838381, 0, 7.84908e-08, 0, 0.0469008, 0, -5.32984e-08, 0, 1.23466, 1.64115, 0.409251, 1.26013)
 mesh = SubResource("ArrayMesh_pu8wm")
 skeleton = NodePath("")
 
@@ -293,3 +304,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -2.1)
 libraries = {
 "": SubResource("AnimationLibrary_nr4gc")
 }
+
+[editable path="Table"]

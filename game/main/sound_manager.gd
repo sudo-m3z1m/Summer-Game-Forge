@@ -14,13 +14,13 @@ func _get_stream_player3d(bus: String = "Master"):
 	add_child(player)
 	return player
 
-func play(stream: AudioStream, bus: String = "Master"):
+func play(stream: AudioStream, bus: String = "Master") -> AudioStreamPlayer:
 	var player = _get_stream_player(bus)
 	player.stream = stream
 	player.play()
 	return player
 
-func play3d(stream: AudioStream, bus: String = "Master"):
+func play3d(stream: AudioStream, bus: String = "Master") -> AudioStreamPlayer3D:
 	var player = _get_stream_player3d(bus)
 	player.stream = stream
 	player.play()
@@ -29,3 +29,4 @@ func play3d(stream: AudioStream, bus: String = "Master"):
 func set_looped(player):
 	player.finished.disconnect(player.queue_free)
 	player.finished.connect(player.play)
+	return player

@@ -14,7 +14,6 @@ ssil_enabled = true
 ssil_radius = 0.5
 ssil_intensity = 0.37
 ssil_sharpness = 0.0
-sdfgi_enabled = true
 sdfgi_y_scale = 0
 sdfgi_energy = 1.2
 volumetric_fog_enabled = true
