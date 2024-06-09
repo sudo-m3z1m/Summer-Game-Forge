@@ -89,7 +89,6 @@ func remove_item(item: Item) -> void:
 func update_inventory_items(items: Array[Item]) -> void:
 	inventory_items = items
 
-
 func get_floppy_disk():
 	var floppy_disk: FloppyDisk = preload("res://game/Disks/floppy_disk.tscn").instantiate()
 	var key = Items.keys().pick_random()
