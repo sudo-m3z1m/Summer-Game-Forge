@@ -24,7 +24,7 @@ var enemies_packeds: Dictionary = {
 
 var levels_parameters: Dictionary = {
 	0: {
-		"enemies_count": 1,
+		"enemies_count": 4,
 		"enemies": [Enemies.Swordsman],
 		"level": preload("res://game/levels/level1.tscn")
 	},
@@ -62,7 +62,7 @@ func _enemy_turn():
 	var character = table.get_character()
 	
 	for unit in table.get_enemies():
-			await unit.attack(character)
+		await unit.attack(character)
 
 func get_enemy_unit():
 	return enemies_packeds[levels_parameters[current_level]["enemies"].pick_random()].instantiate()

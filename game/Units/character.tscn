@@ -11,6 +11,9 @@ script = ExtResource("2_gynj2")
 health = 15
 max_damage_take_height = 1.0
 
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0166078, 0)
+
 [node name="Mc_1" parent="Model" index="0" instance=ExtResource("2_58s42")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.1, 0)
 

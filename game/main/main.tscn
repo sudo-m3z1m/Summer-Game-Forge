@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
-[ext_resource type="Environment" path="res://assets/environment.tres" id="4_br2iy"]
+[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
 [ext_resource type="PackedScene" uid="uid://bmn2aqw7301ny" path="res://assets/Pipes/T_2.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]

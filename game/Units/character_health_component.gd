@@ -15,7 +15,7 @@ func damage(attack: Attack) -> void:
 
 func calculate_armor(damage: int) -> void:
 	var armor_damage = damage #/ 2
-	var items: Array[Item] = target.game_manager.inventory_items
+	var items: Array[Item] = get_tree().current_scene.get_node("GameManager").inventory_items#target.game_manager.inventory_items
 	for item in items:
 		item.durability -= armor_damage
 		if item.durability > 0:

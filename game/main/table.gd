@@ -6,12 +6,12 @@ class_name Table extends Node3D
 @onready var units_container = $Units
 
 func _ready():
-	pass
+	print(enemies_markers)
 
 func spawn_unit(unit: Unit, marker: Marker3D):
 	units_container.add_child(unit)
-	unit.position = marker.position
-	print(unit.global_position)
+	unit.position = marker.global_position
+	unit.marker = marker
 
 func despawn_unit(unit: Unit):
 	unit.queue_free()
@@ -22,7 +22,11 @@ func despawn_units():
 
 func get_enemy_marker():
 	for marker in enemies_markers:
-		if not marker.get_child_count():
+		var not_use = true
+		for unit in units_container.get_children():
+			if unit.marker == marker:
+				not_use = false
+		if not_use:
 			return marker
 	return null
 

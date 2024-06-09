@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bpgrytes3wmk"]
 
-[ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
+[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]

@@ -11,7 +11,7 @@ damage = 1
 
 [sub_resource type="Animation" id="Animation_8swg8"]
 resource_name = "AnotherIdle"
-length = 3.65
+length = 3.77
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,12 +20,12 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("KeyAction"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_r1mfp"]
 resource_name = "AnotherOneIdle"
-length = 4.59
+length = 4.6615
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,12 +34,12 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Plane_001Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_pcrth"]
 resource_name = "Attack"
-length = 3.9
+length = 3.993
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,12 +48,13 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cube_028Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_kqb74"]
 resource_name = "Idle"
-length = 4.55
+length = 4.663
+loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +63,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Icosphere_007Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2qljp"]
@@ -83,10 +84,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04127, -1.10331, 1.76496)
 
 [node name="Plane_001" parent="Model/E_3" index="0"]
 transform = Transform3D(0.00380125, 0.0492027, -0.00264225, 0.000379, -0.00182216, -0.0729373, -0.0492337, 0.00378483, -0.000765473, 4.08343, 1.10588, -1.76504)
-"blend_shapes/Key 1" = 0.0440884
+"blend_shapes/Key 1" = 0.287318
 
 [node name="Cube_028" parent="Model/E_3" index="3"]
-transform = Transform3D(-0.00483739, 6.60044e-05, -0.000950515, -0.000482276, 0.00182207, 3.51997e-05, 0.0626525, 1.91218e-05, -7.31181e-05, 4.08438, 1.10677, -1.70724)
+transform = Transform3D(-0.000248855, -2.8645e-05, -2.52187e-05, 7.73946e-06, 4.89241e-05, -1.52024e-05, 0.00147068, -5.10451e-06, -4.18728e-06, 3.93943, 1.19756, -0.868372)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {

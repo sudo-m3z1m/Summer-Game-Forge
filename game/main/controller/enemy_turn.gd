@@ -4,8 +4,10 @@ extends StateMachineState
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
+	print_rich("[color=red]Enemy Turn[/color]")
+	
 	#TODO с эфейтом всё таки ждать атаки всех противников поочереди
-	game_manager._enemy_turn()
+	await game_manager._enemy_turn()
 	try_transition("Turn")
 
 func update(delta: float):
