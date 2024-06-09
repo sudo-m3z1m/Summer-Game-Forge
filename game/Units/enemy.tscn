@@ -16,5 +16,3 @@ idle_animations = Array[String]([])
 
 [node name="HealthComponent" parent="." index="0"]
 script = ExtResource("4_0ebkr")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="animation_finished"]

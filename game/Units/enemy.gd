@@ -28,3 +28,4 @@ func animation_finished(anim_name: StringName):
 func _ready():
 	animation_player.animation_finished.connect(animation_finished)
 	play_idle_animation()
+

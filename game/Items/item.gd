@@ -19,10 +19,13 @@ func item_can_be_placed(cell: Cell.CellType) -> bool:
 func damage(damage: int) -> bool:
 	durability -= damage
 	if durability > 0:
+		prints(item_name, durability)
 		return false
 	return true
 
-func break_item() -> void:
-	pass
+func break_item(game_manager: GameManager) -> void:
+	if !(item_effect):
+		return
+	game_manager.apply_item_effect(item_effect)
 
-#TODO visualization of armor, armor taking damage and breaking items, armor attack properties
+#TODO visualization of armor, armor attack properties
