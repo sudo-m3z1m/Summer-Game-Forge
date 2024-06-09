@@ -1,9 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=41 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
-[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
+[ext_resource type="Environment" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
 [ext_resource type="PackedScene" uid="uid://dpifvbouax5mo" path="res://assets/Pipes/Pipes.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://game/main/controller/enemy_turn.gd" id="14_pfyf7"]
 [ext_resource type="Script" path="res://game/main/controller/disks.gd" id="16_ckhg7"]
 [ext_resource type="Texture2D" uid="uid://jdwnnuq87shh" path="res://icon.png" id="21_844hn"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="22_2d3sr"]
+[ext_resource type="Script" path="res://core/damage_components/item_effect.gd" id="23_dg6fr"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -81,10 +83,19 @@ density = -1.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_d41xa"]
 size = Vector2(30, 30)
 
+[sub_resource type="Resource" id="Resource_x1fa5"]
+script = ExtResource("22_2d3sr")
+damage = 2
+
+[sub_resource type="Resource" id="Resource_va6ko"]
+script = ExtResource("23_dg6fr")
+attack = SubResource("Resource_x1fa5")
+
 [sub_resource type="Resource" id="Resource_brqcw"]
 script = ExtResource("12_0lehm")
 durability = 1
 cell = 0
+item_effect = SubResource("Resource_va6ko")
 image = ExtResource("21_844hn")
 item_name = "Шлем - тиски"
 item_description = "История этого шлема уникальна, появился этот шлем, когда Ханма Юдзиро решил доказать президенту Северной Кореи, что его сила превосходит всякое оружие. Действительно уникальное сокровище"

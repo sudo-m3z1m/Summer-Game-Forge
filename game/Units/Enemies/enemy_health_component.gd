@@ -1,4 +1,7 @@
 class_name EnemyHealthComponent extends HealthComponent
 
-func damage(attack: Attack) -> void:
-	pass
+func _ready() -> void:
+	health_end.connect(die)
+
+func die() -> void:
+	queue_free()

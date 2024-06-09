@@ -1,9 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://h1m0flwujqsj"]
+[gd_scene load_steps=7 format=3 uid="uid://dmvh4sme62myc"]
 
 [ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="1_c48ax"]
 [ext_resource type="PackedScene" uid="uid://ds6tysyiwur6r" path="res://assets/Levels/L_1.glb" id="2_opowm"]
+[ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="3_vmj8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
+render_priority = 0
+shader = ExtResource("3_vmj8j")
+shader_parameter/color = Color(0, 0.890196, 0, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukd75"]
+render_priority = 0
+shader = ExtResource("3_vmj8j")
+shader_parameter/color = Color(0.572549, 0.901961, 1, 1)
+shader_parameter/lines1 = 3.0
+shader_parameter/lines2 = 5.0
+shader_parameter/_emission = 1.225
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t48ls"]
+render_priority = 0
+shader = ExtResource("3_vmj8j")
+shader_parameter/color = Color(0.780392, 0.764706, 0, 1)
+shader_parameter/lines1 = 2.0
+shader_parameter/lines2 = 2.0
+shader_parameter/_emission = 10.0
+shader_parameter/_frensel = 1.0
 
 [node name="TableLevel" instance=ExtResource("1_c48ax")]
 
 [node name="L_1" parent="." index="0" instance=ExtResource("2_opowm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0945715, 0.379636, 0)
+
+[node name="Cylinder_001" parent="L_1" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cylinder_002" parent="L_1" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cube_002" parent="L_1" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_019" parent="L_1" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cube_021" parent="L_1" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_ukd75")
+
+[node name="Cylinder_003" parent="L_1" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Icosphere" parent="L_1" index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_t48ls")
+
+[node name="Icosphere_008" parent="L_1" index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[node name="Cylinder_006" parent="L_1" index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_co05v")
+
+[editable path="L_1"]

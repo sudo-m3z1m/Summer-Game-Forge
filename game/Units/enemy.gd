@@ -18,9 +18,3 @@ func attack(target: Node3D) -> void:
 
 func play_idle_animation() -> void:
 	animation_player.play(idle_animations[randi() % idle_animations.size()])
-
-func animation_finished(anim_name: StringName):
-	for animation in idle_animations:
-		if !(animation == anim_name):
-			continue
-		play_idle_animation()

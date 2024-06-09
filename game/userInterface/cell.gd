@@ -22,12 +22,12 @@ func _ready() -> void:
 	current_item.cell = current_cell_type
 
 func apply_cell_choice() -> void:
+	if inventory_hud.new_item.cell != current_cell_type:
+		return
 	change_item(inventory_hud.new_item)
 	inventory_hud.put_disk_to_drive()
 
 func change_item(new_item: Item) -> void:
-	if new_item.cell != current_cell_type:
-		return
-	current_item.break_item()
+	current_item.break_item(inventory_hud.game_manager)
 	current_item = new_item
 	item_texture.texture = current_item.image

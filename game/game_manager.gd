@@ -55,7 +55,6 @@ func load_level():
 		var unit = get_enemy_unit()
 		table.spawn_unit(unit, marker) 
 	table.spawn_unit(preload("res://game/Units/character.tscn").instantiate(), table.player_marker)
-	
 
 func unload_level():
 	if table_level:
@@ -64,9 +63,14 @@ func unload_level():
 
 func _enemy_turn():
 	var character = table.get_character()
-	
+
 	for unit in table.get_enemies():
 		await unit.attack(character)
+
+func apply_item_effect(effect: ItemEffect) -> void:
+	var enemies: Array[Node] = table.get_enemies()
+	for enemy in enemies:
+		effect.apply_effect(enemy)
 
 func get_enemy_unit():
 	return enemies_packeds[levels_parameters[current_level]["enemies"].pick_random()].instantiate()
