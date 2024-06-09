@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkfnhu1hlvfwo"]
+
+[ext_resource type="PackedScene" uid="uid://d4i0anh63ko8d" path="res://game/Units/table_unit.tscn" id="1_5tmu8"]
+[ext_resource type="Script" path="res://game/Units/enemy.gd" id="2_juy1b"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="3_1t3ip"]
+[ext_resource type="PackedScene" uid="uid://dnpcsb6sibnjr" path="res://assets/Enemies/E_2.glb" id="4_4uenq"]
+
+[sub_resource type="Resource" id="Resource_801va"]
+script = ExtResource("3_1t3ip")
+damage = 1
+
+[sub_resource type="Animation" id="Animation_ei8t6"]
+resource_name = "Attack"
+length = 3.62
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_2/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Cube_018Action_001"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qv4c4"]
+resource_name = "Idle"
+length = 4.56
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_2/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Icosphere_006Action"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_36ciq"]
+resource_name = "AnotherIdle"
+length = 3.73
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_2/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Cylinder_027Action"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gwn8"]
+_data = {
+"AnotherIdle": SubResource("Animation_36ciq"),
+"Attack": SubResource("Animation_ei8t6"),
+"Idle": SubResource("Animation_qv4c4")
+}
+
+[node name="Swordsman" instance=ExtResource("1_5tmu8")]
+script = ExtResource("2_juy1b")
+attack_resource = SubResource("Resource_801va")
+idle_animations = Array[String](["Idle", "AnotherIdle"])
+
+[node name="E_2" parent="Model" index="0" instance=ExtResource("4_4uenq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80443, -1.10183, 1.75669)
+
+[node name="Cube_018" parent="Model/E_2" index="1"]
+transform = Transform3D(0.00315311, -0.00474586, 0.0512062, -0.00211108, -0.0512711, -0.00462188, -0.0513823, 0.00181527, 0.0033322, 3.85678, 1.08653, -1.75161)
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_2gwn8")
+}
+
+[editable path="Model/E_2"]

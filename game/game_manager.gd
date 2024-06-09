@@ -1,10 +1,12 @@
-extends Node
+class_name GameManager extends Node
 
 @export var table: Table
 
 signal enemy_turn
 signal player_turn
 signal player_grab_disk
+
+var inventory_items: Array[Item]
 
 var current_level: int = 0
 
@@ -61,3 +63,6 @@ func _enemy_turn():
 
 func get_enemy_unit():
 	return enemies_packeds[levels_parameters[current_level]["enemies"].pick_random()].instantiate()
+
+func update_inventory_items(items: Array[Item]) -> void:
+	inventory_items = items
