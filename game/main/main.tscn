@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=34 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
@@ -15,12 +15,10 @@
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk.gd" id="8_ber8l"]
 [ext_resource type="Script" path="res://game/main/monitor_state.gd" id="8_igydc"]
 [ext_resource type="Script" path="res://game/main/controller/match.gd" id="8_v02cy"]
-[ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk_to_drive.gd" id="12_nvcx1"]
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
 [ext_resource type="Script" path="res://game/main/controller/enemy_turn.gd" id="14_pfyf7"]
 [ext_resource type="Script" path="res://game/main/controller/disks.gd" id="16_ckhg7"]
-[ext_resource type="Resource" uid="uid://c0drdpfevl7np" path="res://game/Items/test.tres" id="21_1bwsh"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -257,7 +255,7 @@ fov = 60.0
 
 [node name="Controller" type="Node" parent="World"]
 script = ExtResource("3_q38pu")
-start_state = "Match"
+start_state = "Disks"
 
 [node name="Match" type="Node" parent="World/Controller" node_paths=PackedStringArray("projector_marker")]
 script = ExtResource("8_v02cy")
@@ -319,15 +317,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.467, -1.7)
 script = ExtResource("6_vxhaq")
 is_onecolumn = false
 disks_in_column = 4
-
-[node name="FloppyDisk" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
-item = ExtResource("21_1bwsh")
-
-[node name="FloppyDisk2" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
-item = ExtResource("21_1bwsh")
-
-[node name="FloppyDisk3" parent="World/Deck/DisksContainer" instance=ExtResource("11_auavb")]
-item = ExtResource("21_1bwsh")
 
 [node name="DeckArea3D" type="Area3D" parent="World/Deck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0445248, 0.408512, -1.60576)

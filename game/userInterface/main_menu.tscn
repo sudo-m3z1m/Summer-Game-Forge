@@ -266,6 +266,9 @@ script = null
 [node name="InventoryHud" parent="Control/TextureRect/SubViewport/PC/SubViewportContainer/SubViewport/MonitorHud" index="2"]
 script = null
 
+[node name="Cube_008" parent="Control/TextureRect/SubViewport/PC" index="13"]
+transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
+
 [node name="Table" parent="Control/TextureRect/SubViewport" instance=ExtResource("8_o6eu6")]
 script = null
 

@@ -92,6 +92,9 @@ script = ExtResource("2_juy1b")
 attack_resource = SubResource("Resource_801va")
 idle_animations = Array[String](["Idle", "AnotherIdle"])
 
+[node name="HealthComponent" parent="." index="0" node_paths=PackedStringArray("model")]
+model = NodePath("../Model")
+
 [node name="E_2" parent="Model" index="0" instance=ExtResource("4_4uenq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.804, -1.102, -1.757)
 
