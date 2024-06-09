@@ -16,7 +16,10 @@ func damage(attack: Attack):
 		health_changed.emit(attack.damage)
 		animate_damage_take()
 	else:
-		health_end.emit()
+		die()
+
+func die() -> void:
+	pass
 
 func animate_damage_take() -> void:
 	var tween: Tween = create_tween()

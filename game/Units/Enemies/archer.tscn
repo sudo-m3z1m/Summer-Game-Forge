@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://save3uluuyjx"]
+[gd_scene load_steps=16 format=3 uid="uid://save3uluuyjx"]
 
 [ext_resource type="PackedScene" uid="uid://d4i0anh63ko8d" path="res://game/Units/table_unit.tscn" id="1_ihrui"]
 [ext_resource type="Script" path="res://game/Units/enemy.gd" id="2_kt1oy"]
 [ext_resource type="Script" path="res://core/damage_components/attack.gd" id="3_g8qgx"]
+[ext_resource type="Script" path="res://game/Units/Enemies/enemy_health_component.gd" id="4_15g0l"]
 [ext_resource type="PackedScene" uid="uid://d3l6dj8vbvnlf" path="res://assets/Enemies/E_3.glb" id="4_lqyer"]
 [ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="6_6u5tr"]
 
@@ -106,6 +107,9 @@ _data = {
 script = ExtResource("2_kt1oy")
 attack_resource = SubResource("Resource_801va")
 idle_animations = Array[String](["Idle", "AnotherIdle", "AnotherOneIdle"])
+
+[node name="HealthComponent" parent="." index="0"]
+script = ExtResource("4_15g0l")
 
 [node name="E_3" parent="Model" index="0" instance=ExtResource("4_lqyer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04127, -1.10331, 1.76496)
