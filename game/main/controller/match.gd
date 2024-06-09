@@ -1,10 +1,13 @@
 extends StateMachineState
 
 @onready var game_manager = $"../../../GameManager"
+@export var projector_marker: Marker3D
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
 	game_manager.load_level()
+	
+	SoundManager.play3d(preload("res://assets/audios/Projector.mp3")).global_position = projector_marker.global_position
 	
 	locked = true
 	await get_tree().create_timer(0.5).timeout

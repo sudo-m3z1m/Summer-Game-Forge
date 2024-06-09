@@ -1,7 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=37 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
-[ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
 [ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
@@ -140,9 +139,6 @@ size = Vector3(0.902588, 0.109314, 0.410034)
 [node name="Main" type="Node"]
 script = ExtResource("1_obpee")
 
-[node name="SoundManager" type="Node" parent="."]
-script = ExtResource("1_pqany")
-
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("table", "inventory_hud")]
 script = ExtResource("3_0r2dt")
 table = NodePath("../World/Table")
@@ -220,6 +216,7 @@ transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.9998
 [node name="Table" parent="World" instance=ExtResource("4_vweva")]
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
+visible = false
 mesh = SubResource("PlaneMesh_d41xa")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
@@ -231,8 +228,9 @@ fov = 60.0
 script = ExtResource("3_q38pu")
 start_state = "Match"
 
-[node name="Match" type="Node" parent="World/Controller"]
+[node name="Match" type="Node" parent="World/Controller" node_paths=PackedStringArray("projector_marker")]
 script = ExtResource("8_v02cy")
+projector_marker = NodePath("../../ProjectorMarker3D")
 start_state = "Turn"
 
 [node name="Turn" type="Node" parent="World/Controller/Match"]
@@ -329,7 +327,10 @@ shape = SubResource("BoxShape3D_bnrqg")
 [node name="DriveMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.776526, 0.531298, -0.973787)
 
-[node name="Marker3D" type="Marker3D" parent="World"]
+[node name="ProjectorMarker3D" type="Marker3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0.3)
+
+[node name="MonitorMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386421, 0.7, -1.29505)
 
 [editable path="World/Projector"]
