@@ -7,6 +7,7 @@ class_name InventoryHud
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_manager: GameManager = get_tree().current_scene.get_node("GameManager")
+@onready var panel: PanelContainer = $MarginContainer/Panel
 
 var new_item: Item = Item.new()
 

@@ -27,7 +27,7 @@ shadow_size = 10
 resource_name = "AppearAnimation"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -39,7 +39,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -51,7 +51,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -63,7 +63,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -75,7 +75,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -97,72 +97,12 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:self_modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_ux3o1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -174,7 +114,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -186,7 +126,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -198,7 +138,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -210,7 +150,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -231,66 +171,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3:self_modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ah0ko"]
@@ -354,7 +234,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/HBoxContainer" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../VBoxContainer/HBoxContainer2/Cell2")
 inventory_hud = NodePath("../../../../..")
@@ -368,14 +248,14 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 2
 focus_neighbor_right = NodePath("../Cell2")
 current_cell_type = 2
 inventory_hud = NodePath("../../../../../..")
 
 [node name="Cell2" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Cell")
 focus_neighbor_top = NodePath("../../../HBoxContainer/Cell")
@@ -385,7 +265,7 @@ current_cell_type = 1
 inventory_hud = NodePath("../../../../../..")
 
 [node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Cell2")
 current_cell_type = 3
@@ -397,7 +277,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 2
 current_cell_type = 4
 inventory_hud = NodePath("../../../../../..")
