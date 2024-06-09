@@ -2,10 +2,10 @@ extends Resource
 
 class_name Item
 
-@export var durability: int
+@export var durability: int = 1
 @export var cell: Cell.CellType
+@export var item_effect: ItemEffect
 
-#TODO maybe need to make dict with items id
 @export var image: Texture2D
 @export var item_name: String
 @export_multiline var item_description: String
@@ -16,5 +16,13 @@ func item_can_be_placed(cell: Cell.CellType) -> bool:
 		return false
 	return true
 
+func damage(damage: int) -> bool:
+	durability -= damage
+	if durability > 0:
+		return false
+	return true
+
 func break_item() -> void:
 	pass
+
+#TODO visualization of armor, armor taking damage and breaking items, armor attack properties

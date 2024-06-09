@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
-[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
+[ext_resource type="Environment" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
 [ext_resource type="PackedScene" uid="uid://bmn2aqw7301ny" path="res://assets/Pipes/T_2.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
@@ -83,7 +83,7 @@ size = Vector2(30, 30)
 
 [sub_resource type="Resource" id="Resource_brqcw"]
 script = ExtResource("12_0lehm")
-durability = 10000
+durability = 1
 cell = 0
 item_name = "Шлем - тиски"
 item_description = "История этого шлема уникальна, появился этот шлем, когда Ханма Юдзиро решил доказать президенту Северной Кореи, что его сила превосходит всякое оружие. Действительно уникальное сокровище"
@@ -141,9 +141,10 @@ script = ExtResource("1_obpee")
 [node name="SoundManager" type="Node" parent="."]
 script = ExtResource("1_pqany")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("table")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("table", "inventory_hud")]
 script = ExtResource("3_0r2dt")
 table = NodePath("../World/Table")
+inventory_hud = NodePath("../PC/SubViewportContainer/SubViewport/MonitorHud/InventoryHud")
 
 [node name="World" type="Node3D" parent="."]
 

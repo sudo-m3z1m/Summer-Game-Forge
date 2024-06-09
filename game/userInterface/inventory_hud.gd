@@ -3,12 +3,15 @@ extends Control
 class_name InventoryHud
 
 @export var monitor: Monitor
-@export var game_manager: GameManager
 @export var cells: Array[Cell]
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var game_manager: GameManager = get_tree().current_scene.get_node("GameManager")
 
 var new_item: Item = Item.new()
+
+func _ready() -> void:
+	update_inventory()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Quit"):
@@ -21,6 +24,15 @@ func show_inventory(new_item: Item) -> void:
 
 func hide_inventory() -> void:
 	monitor.display_reviews()
+
+func remove_item(item: Item) -> void:
+	for cell in cells:
+		if cell.current_item != item:
+			continue
+		var new_item: Item = Item.new()
+		new_item.cell = item.cell
+		cell.change_item(new_item)
+		update_inventory()
 
 func update_inventory() -> void:
 	var items: Array[Item]

@@ -1,6 +1,7 @@
 class_name GameManager extends Node
 
 @export var table: Table
+@export var inventory_hud: InventoryHud
 
 signal enemy_turn
 signal player_turn
@@ -66,6 +67,9 @@ func _enemy_turn():
 
 func get_enemy_unit():
 	return enemies_packeds[levels_parameters[current_level]["enemies"].pick_random()].instantiate()
+
+func remove_item(item: Item) -> void:
+	inventory_hud.remove_item(item)
 
 func update_inventory_items(items: Array[Item]) -> void:
 	inventory_items = items

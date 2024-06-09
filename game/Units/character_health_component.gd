@@ -7,20 +7,19 @@ func damage(attack: Attack) -> void:
 	var attack_damage: int = attack.damage
 	health -= attack_damage
 	calculate_armor(attack_damage)
-	
 	if health > 0:
 		return
-	
+
 	die()
 
 func calculate_armor(damage: int) -> void:
-	var armor_damage = damage #/ 2
-	var items: Array[Item] = get_tree().current_scene.get_node("GameManager").inventory_items#target.game_manager.inventory_items
+	var armor_damage: int
+	var game_manager: GameManager = get_tree().current_scene.get_node("GameManager")
+	var items: Array[Item] = game_manager.inventory_items
 	for item in items:
-		item.durability -= armor_damage
-		if item.durability > 0:
-			continue
-		item.break_item()
+		armor_damage = damage
+		if item.damage(armor_damage):
+			game_manager.remove_item(item)
 
 func die() -> void:
 	get_tree().quit() #TODO HUD and other staff
