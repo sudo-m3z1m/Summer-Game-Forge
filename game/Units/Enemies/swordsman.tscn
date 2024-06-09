@@ -12,7 +12,6 @@ damage = 1
 [sub_resource type="Animation" id="Animation_36ciq"]
 resource_name = "AnotherIdle"
 length = 3.869
-loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,7 +20,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cylinder_027Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_ei8t6"]
@@ -35,7 +34,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cube_018Action_001"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_qv4c4"]
@@ -50,7 +49,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Icosphere_006Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2gwn8"]
