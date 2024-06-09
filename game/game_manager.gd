@@ -19,10 +19,18 @@ enum Enemies {
 	Swordsman,
 }
 
+enum Items {
+	Test,
+}
+
 var enemies_packeds: Dictionary = {
 	Enemies.Mage: preload("res://game/Units/Enemies/archer.tscn"),
 	Enemies.Archer: preload("res://game/Units/Enemies/mage.tscn"),
 	Enemies.Swordsman: preload("res://game/Units/Enemies/swordsman.tscn"),
+}
+
+var items_resources: Dictionary = {
+	Items.Test: preload("res://game/Items/test.tres"),
 }
 
 var levels_parameters: Dictionary = {
@@ -80,3 +88,10 @@ func remove_item(item: Item) -> void:
 
 func update_inventory_items(items: Array[Item]) -> void:
 	inventory_items = items
+
+
+func get_floppy_disk():
+	var floppy_disk: FloppyDisk = preload("res://game/Disks/floppy_disk.tscn").instantiate()
+	var key = Items.keys().pick_random()
+	floppy_disk.item = items_resources[Items.get(key)]
+	return floppy_disk

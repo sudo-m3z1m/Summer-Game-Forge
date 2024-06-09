@@ -9,7 +9,6 @@ script = ExtResource("1_1wmfc")
 [node name="HealthComponent" type="Node3D" parent="."]
 script = ExtResource("1_mnnfy")
 health = 3
-max_damage_take_height = 0.1
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -21,7 +20,3 @@ max_damage_take_height = 0.1
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("../Node/AngleHelper")
-
-[node name="AnimationsTimer" type="Timer" parent="."]
-wait_time = 6.0
-autostart = true

@@ -30,8 +30,8 @@ func update(delta: float):
 	if Input.is_action_just_pressed("left_mouse"):
 		if collider is FloppyDisk:
 			try_transition("GrabFloppyDisk")
-		if collider and collider.get_parent() is Monitor:
-			try_transition("MonitorState")
+		#if collider and collider.get_parent() is Monitor:
+			#try_transition("MonitorState")
 
 func exit():
 	pass

@@ -8,6 +8,7 @@ func damage(attack: Attack) -> void:
 	health -= attack_damage
 	calculate_armor(attack_damage)
 	if health > 0:
+		animate_damage_take()
 		return
 
 	die()

@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://d4i0anh63ko8d" path="res://game/Units/table_unit.tscn" id="1_2cinn"]
 [ext_resource type="Script" path="res://game/Units/enemy.gd" id="2_6ob1v"]
 [ext_resource type="Script" path="res://core/damage_components/attack.gd" id="3_vyoj4"]
-[ext_resource type="Script" path="res://game/Units/Enemies/enemy_health_component.gd" id="4_6qbxu"]
 [ext_resource type="PackedScene" uid="uid://bsg3eebpbtt7w" path="res://assets/Enemies/E_1.glb" id="4_ie4yl"]
 [ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="6_s30sk"]
 
@@ -31,7 +30,7 @@ shader_parameter/_frensel = 1.0
 
 [sub_resource type="Animation" id="Animation_odsyb"]
 resource_name = "AnotherIdle"
-length = 3.55
+length = 3.673
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,12 +39,12 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cylinder_026Action_001"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_2necf"]
 resource_name = "Attack"
-length = 4.55
+length = 4.695
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,12 +53,12 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cylinder_029Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_dsdhl"]
 resource_name = "Idle"
-length = 4.55
+length = 4.713
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,7 +67,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Icosphere_001Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvbkr"]
@@ -83,11 +82,6 @@ script = ExtResource("2_6ob1v")
 attack_resource = SubResource("Resource_801va")
 idle_animations = Array[String](["Idle", "AnotherIdle"])
 
-[node name="HealthComponent" parent="." index="0" node_paths=PackedStringArray("model")]
-script = ExtResource("4_6qbxu")
-model = NodePath("../Model")
-max_damage_take_height = 0.2
-
 [node name="E_1" parent="Model" index="0" instance=ExtResource("4_ie4yl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63681, -1.11549, 1.75728)
 
@@ -100,12 +94,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_6ui2u")
 
 [node name="Icosphere_001" parent="Model/E_1/Cylinder_026" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_6ui2u")
+transform = Transform3D(0.00380486, 0.00633201, 5.66071e-11, -0.000421313, 0.0571841, -3.12451e-12, -5.66072e-11, -4.69592e-11, 0.00382811, 3.6856, 1.09669, -1.7661)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_uvbkr")
 }
-
-[connection signal="timeout" from="AnimationsTimer" to="." method="play_idle_animation"]
 
 [editable path="Model/E_1"]

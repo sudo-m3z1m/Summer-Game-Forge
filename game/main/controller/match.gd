@@ -18,6 +18,9 @@ var locked: bool = true
 func update(delta: float):
 	super(delta)
 	if locked: return
+	
+	if game_manager.table.get_enemies().is_empty():
+		try_transition("Disk")
 
 func exit():
 	game_manager.unload_level()
