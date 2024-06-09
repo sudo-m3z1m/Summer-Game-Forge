@@ -24,3 +24,7 @@ func animation_finished(anim_name: StringName):
 		if !(animation == anim_name):
 			continue
 		play_idle_animation()
+
+func _ready():
+	animation_player.animation_finished.connect(animation_finished)
+	play_idle_animation()

@@ -4,9 +4,13 @@ extends State
 @export var drive_marker: Marker3D
 @export var monitor: Monitor
 @export var put_time: float = 1.0
+@onready var monitor_state = $"../MonitorState"
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
+	if monitor_state.last_to_monitor:
+		await monitor_state.animate_camera(false)
+	
 	var disk = hand_marker.get_child(0)
 	
 	monitor.animation_player.play("open_drive")

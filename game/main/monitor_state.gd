@@ -16,7 +16,7 @@ func enter(object: Object, state_machine: StateMachine):
 	
 	default_camera_rotation = camera.rotation
 	default_camera_fov = camera.fov
-	animate_camera()
+	#animate_camera()
 	
 	locked = true
 	await get_tree().create_timer(0.5).timeout
@@ -25,8 +25,12 @@ func enter(object: Object, state_machine: StateMachine):
 var locked: bool = true
 func update(delta: float) -> void:
 	if locked: return
-	if Input.is_action_pressed("left_mouse") or Input.is_action_pressed("Quit") or Input.is_action_pressed("ui_cancel"):
-		try_transition("ChoosingAction")
+	#if Input.is_action_pressed("left_mouse") or Input.is_action_pressed("Quit") or Input.is_action_pressed("ui_cancel"):
+		#try_transition("ChoosingAction")
+	if Input.is_action_just_pressed("view_monitor"):
+		animate_camera(true)
+	if Input.is_action_just_released("view_monitor"):
+		animate_camera(false)
 	#if !(Input.is_action_pressed("Quit")):
 		#return
 	#try_transition("ChoosingAction")
@@ -38,8 +42,14 @@ func try_transition(state: String) -> void:
 	state_machine.transition_to(state)
 	
 @onready var main = owner
+var tween: Tween
+var last_to_monitor: bool = false
 func animate_camera(to_monitor: bool = true) -> void:
-	var tween: Tween = create_tween()
+	if last_to_monitor == to_monitor: return
+	if tween and tween.is_running():
+		await tween.finished
+	tween = create_tween()
+	last_to_monitor = to_monitor
 	#var audio_tween = create_tween()
 	#audio_tween.set_parallel(false)
 	tween.set_parallel(false)
@@ -53,3 +63,4 @@ func animate_camera(to_monitor: bool = true) -> void:
 		tween.tween_property(main.monitor_player, "max_distance", 4.0, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(camera, "fov", default_camera_fov, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(camera, "rotation", default_camera_rotation, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	await tween.finished

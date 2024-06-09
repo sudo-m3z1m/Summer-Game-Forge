@@ -1,4 +1,5 @@
 class_name Table extends Node3D
+@onready var animation_player = $AnimationPlayer
 
 @onready var player_marker = $PlayerMarker3D
 @onready var enemies_markers_container = $EnemiesMarkers3D

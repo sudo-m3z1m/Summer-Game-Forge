@@ -15,8 +15,9 @@ func _ready() -> void:
 	update_inventory()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Quit") and monitor.current_screen == self:
-		hide_inventory()
+	pass
+	#if event.is_action_pressed("Quit") and monitor.current_screen == self:
+		#hide_inventory()
 
 func show_inventory(new_item: Item) -> void:
 	animation_player.play("AppearAnimation")
