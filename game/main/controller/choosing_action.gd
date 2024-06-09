@@ -21,7 +21,7 @@ func update(delta: float):
 	if collider is FloppyDisk:
 		var index = deck.get_disk_index(collider)
 		deck.select_disk(index)
-	if last_update_collider != collider and last_update_collider is FloppyDisk:
+	if is_instance_valid(last_update_collider) and last_update_collider != collider and last_update_collider is FloppyDisk:
 		var index = deck.get_disk_index(last_update_collider)
 		deck.deselect_disk(index)
 	

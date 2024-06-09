@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=18 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
@@ -54,6 +54,60 @@ shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6rv3"]
 
+[sub_resource type="Animation" id="Animation_5jxeg"]
+resource_name = "open_drive"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 5.93412, -1.5708), Vector3(-4.59934e-08, 2.84351, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_dicw8"]
+resource_name = "close_drive"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.59934e-08, 2.84351, -1.5708), Vector3(0, 5.93412, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_s1e1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_008:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.93412, -1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rtqm"]
+_data = {
+"RESET": SubResource("Animation_s1e1i"),
+"close_drive": SubResource("Animation_dicw8"),
+"open_drive": SubResource("Animation_5jxeg")
+}
+
 [node name="PC" instance=ExtResource("1_1x2hh")]
 script = ExtResource("2_doy1v")
 
@@ -78,6 +132,9 @@ visible = false
 
 [node name="Cube_013" parent="." index="6"]
 surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
+
+[node name="Cube_008" parent="." index="10"]
+transform = Transform3D(-7.1173e-09, 0.0600909, -0.0462708, -0.173275, -2.79523e-09, 0, -2.59049e-09, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
 [node name="SubViewport" type="SubViewport" parent="." index="11"]
 size = Vector2i(800, 640)
@@ -114,5 +171,8 @@ visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
+libraries = {
+"": SubResource("AnimationLibrary_3rtqm")
+}
 
 [editable path="Screen"]

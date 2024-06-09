@@ -5,6 +5,7 @@ class_name Monitor extends Node3D
 @onready var inventory_screen: InventoryHud = %InventoryHud
 @onready var current_screen: Control = reviews_screen
 @onready var camera_marker: Marker3D = $CameraMarker
+@onready var animation_player = $AnimationPlayer
 
 func change_current_screen(new_screen: Control) -> void:
 	current_screen.hide()

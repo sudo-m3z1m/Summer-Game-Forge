@@ -32,9 +32,11 @@ func update(delta: float):
 	var point = state_machine.state_machine.get_world_point(mouse_position, true)
 	var collider = point.get("collider")
 	
-	if collider and collider.get_parent() is Deck:
-		if Input.is_action_just_pressed("left_mouse"):
+	if Input.is_action_just_pressed("left_mouse"):
+		if collider and collider.get_parent() is Deck:
 			try_transition("PutFloppyDisk")
+		if collider and collider.name == "DriveArea3D":
+			try_transition("PutFloppyDiskToDrive")
 
 func exit():
 	pass

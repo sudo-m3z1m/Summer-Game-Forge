@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvd87r4h43ftr"]
+
+[ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="1_3psva"]
+[ext_resource type="PackedScene" uid="uid://b3846n46sigol" path="res://assets/Levels/L_3.glb" id="2_nmuit"]
+
+[node name="TableLevel" instance=ExtResource("1_3psva")]
+
+[node name="L_3" parent="." index="0" instance=ExtResource("2_nmuit")]

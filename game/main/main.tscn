@@ -1,10 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=33 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
 [ext_resource type="Script" path="res://game/game_manager.gd" id="3_0r2dt"]
 [ext_resource type="Script" path="res://game/main/controller.gd" id="3_q38pu"]
-[ext_resource type="Environment" path="res://assets/environment.tres" id="4_br2iy"]
+[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="4_br2iy"]
 [ext_resource type="Script" path="res://game/main/controller/turn.gd" id="4_h85v6"]
 [ext_resource type="PackedScene" uid="uid://bmn2aqw7301ny" path="res://assets/Pipes/T_2.glb" id="4_rjcnj"]
 [ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="4_vweva"]
@@ -17,10 +17,8 @@
 [ext_resource type="Script" path="res://game/main/monitor_state.gd" id="8_igydc"]
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/Items/item.gd" id="12_0lehm"]
+[ext_resource type="Script" path="res://game/main/controller/put_floppy_disk_to_drive.gd" id="12_nvcx1"]
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
-[ext_resource type="PackedScene" uid="uid://bsg3eebpbtt7w" path="res://assets/Enemies/E_1.glb" id="18_fxpmd"]
-[ext_resource type="PackedScene" uid="uid://dnpcsb6sibnjr" path="res://assets/Enemies/E_2.glb" id="19_yk3os"]
-[ext_resource type="PackedScene" uid="uid://d3l6dj8vbvnlf" path="res://assets/Enemies/E_3.glb" id="20_57xr6"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -127,6 +125,9 @@ func _process(delta):
 		get_tree().create_tween().tween_property(camera, \"fov\", 60.0, .2).set_trans(Tween.TRANS_CUBIC)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 "
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gc5ty"]
+size = Vector3(0.136536, 0.379639, 0.290985)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_obpee")
@@ -238,6 +239,12 @@ hand_marker = NodePath("../../../HandMarker3D")
 deck = NodePath("../../../Deck")
 put_time = 0.2
 
+[node name="PutFloppyDiskToDrive" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "drive_marker", "monitor")]
+script = ExtResource("12_nvcx1")
+hand_marker = NodePath("../../../HandMarker3D")
+drive_marker = NodePath("../../../DriveMarker3D")
+monitor = NodePath("../../../../PC")
+
 [node name="MonitorState" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("camera", "monitor")]
 script = ExtResource("8_igydc")
 camera = NodePath("../../../Camera3D")
@@ -274,8 +281,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0445248, 0.408512, -1.60576
 transform = Transform3D(1, 0, 0, 0, 0.882357, -0.470581, 0, 0.470581, 0.882357, 0.154933, 0.0249036, 0.0179774)
 shape = SubResource("BoxShape3D_y3v44")
 
-[node name="Monitor" type="Node3D" parent="World"]
-
 [node name="HandMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -0.2, 0.5, -1.7)
 gizmo_extents = 0.1
@@ -286,14 +291,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -1.7)
 gizmo_extents = 0.1
 script = SubResource("GDScript_hbolx")
 
+[node name="DriveArea3D" type="Area3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.751013, 0.5, -1.00248)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/DriveArea3D"]
+transform = Transform3D(0.89216, 0, -0.451719, 0, 1, 0, 0.451719, 0, 0.89216, -0.0224261, 0.085083, 0.0161052)
+shape = SubResource("BoxShape3D_gc5ty")
+
+[node name="DriveMarker3D" type="Marker3D" parent="World"]
+transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.758367, 0.531987, -1.00474)
+
 [node name="PC" parent="." instance=ExtResource("12_u08xi")]
 transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
-
-[node name="E_1" parent="." instance=ExtResource("18_fxpmd")]
-transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 3.64166, -0.627827, -1.31613)
-
-[node name="E_2" parent="E_1" instance=ExtResource("19_yk3os")]
-
-[node name="E_3" parent="E_1" instance=ExtResource("20_57xr6")]
 
 [editable path="World/Projector"]

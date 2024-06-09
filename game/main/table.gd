@@ -15,7 +15,7 @@ func spawn_unit(unit: Unit, marker: Marker3D):
 func despawn_unit(unit: Unit):
 	unit.queue_free()
 
-func clear_units():
+func despawn_units():
 	for unit in units_container.get_children():
 		unit.queue_free()
 

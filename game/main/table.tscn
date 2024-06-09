@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwv75iqj78td0"]
+[gd_scene load_steps=22 format=3 uid="uid://dwv75iqj78td0"]
 
 [ext_resource type="Script" path="res://game/main/table.gd" id="1_y6r52"]
-[ext_resource type="PackedScene" uid="uid://ouwn2rp8q2i6" path="res://game/levels/table_level.tscn" id="2_m5fhi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15w5"]
 
@@ -265,8 +264,6 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_yvuj6")
 }
-
-[node name="TableLevel" parent="." instance=ExtResource("2_m5fhi")]
 
 [node name="PlayerMarker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.8)
