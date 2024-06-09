@@ -21,6 +21,6 @@ var last_mouse_mode = DisplayServer.mouse_get_mode()
 func toggle(mode: bool = false):
 	if mode:
 		last_mouse_mode = DisplayServer.mouse_get_mode()
-	get_tree().paused = mode
-	visible = get_tree().paused
+	#get_tree().paused = mode
+	visible = mode
 	DisplayServer.mouse_set_mode(last_mouse_mode if not mode else DisplayServer.MOUSE_MODE_VISIBLE)

@@ -110,4 +110,7 @@ libraries = {
 "": SubResource("AnimationLibrary_2gwn8")
 }
 
+[node name="HealthContainer" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172801, 0)
+
 [editable path="Model/E_2"]

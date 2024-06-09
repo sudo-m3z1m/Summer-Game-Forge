@@ -26,7 +26,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6w8ea"]
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5o7f3"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5a3i0"]
 width = 128
 height = 128
 depth = 128
@@ -35,7 +35,7 @@ noise = SubResource("FastNoiseLite_6w8ea")
 
 [sub_resource type="FogMaterial" id="FogMaterial_uk2r3"]
 density = 1.8
-density_texture = SubResource("NoiseTexture3D_5o7f3")
+density_texture = SubResource("NoiseTexture3D_5a3i0")
 
 [sub_resource type="Animation" id="Animation_vfoim"]
 length = 0.001

@@ -1,13 +1,116 @@
-[gd_scene load_steps=7 format=3 uid="uid://pg107sskwqdf"]
+[gd_scene load_steps=24 format=3 uid="uid://pg107sskwqdf"]
 
 [ext_resource type="Script" path="res://game/userInterface/main_menu.gd" id="1_h1lnw"]
 [ext_resource type="Script" path="res://core/ui/control_sounds_component.gd" id="2_eb3g1"]
 [ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="2_hj6gs"]
 [ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="3_uovc3"]
 [ext_resource type="AudioStream" uid="uid://ctre8vdeyxrtj" path="res://assets/ui/click1.wav" id="4_5xs1d"]
+[ext_resource type="PackedScene" uid="uid://bv6wunhdbhy0r" path="res://assets/Projector/P1.glb" id="5_kbepj"]
+[ext_resource type="Environment" uid="uid://yglthi40nyny" path="res://assets/environment.tres" id="6_diecd"]
+[ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="7_c3rxn"]
+[ext_resource type="PackedScene" uid="uid://dwv75iqj78td0" path="res://game/main/table.tscn" id="8_o6eu6"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oc0pa"]
 viewport_path = NodePath("Control/TextureRect/SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_dtw68"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lyfga"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5o7f3"]
+width = 128
+height = 128
+depth = 128
+color_ramp = SubResource("Gradient_dtw68")
+noise = SubResource("FastNoiseLite_lyfga")
+
+[sub_resource type="FogMaterial" id="FogMaterial_tr4hw"]
+density = 1.8
+density_texture = SubResource("NoiseTexture3D_5o7f3")
+
+[sub_resource type="Animation" id="Animation_vfoim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubstractFogVolume:material:density")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5gk18"]
+resource_name = "fog_wrap"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubstractFogVolume:material:density")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.1, 2.2, 3.7, 4.5, 6, 6.8, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.0, -0.9, -1.05, -1.0, -0.9, -0.95, -1.0, -1.05, -1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ionys"]
+_data = {
+"RESET": SubResource("Animation_vfoim"),
+"fog_wrap": SubResource("Animation_5gk18")
+}
+
+[sub_resource type="FogMaterial" id="FogMaterial_nfcbj"]
+density = -1.0
+
+[sub_resource type="Shader" id="Shader_v0tva"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D viewport;
+uniform sampler2D noise;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 texture1 = texture(viewport, UV).rgb;
+	vec2 noise_uv = UV + cos(TIME) * 100.0f;
+	//noise_uv.y = UV.y;
+	vec3 texture2 = texture(noise, noise_uv).rgb;
+	ALBEDO = mix(texture1, texture2, 0.1);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hc7sg"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mn3h"]
+width = 48
+height = 64
+noise = SubResource("FastNoiseLite_hc7sg")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sj3nw"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjs6e"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_v0tva")
+shader_parameter/viewport = SubResource("ViewportTexture_sj3nw")
+shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_h1lnw")
@@ -48,6 +151,134 @@ expand_mode = 1
 [node name="SubViewport" type="SubViewport" parent="Control/TextureRect"]
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
+
+[node name="Projector" parent="Control/TextureRect/SubViewport" instance=ExtResource("5_kbepj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.059, -0.435, 0)
+
+[node name="Cylinder_001" parent="Control/TextureRect/SubViewport/Projector" index="0"]
+transform = Transform3D(0.322468, 0, -0.0837521, 0, 0.0444814, 0, 0.0837521, 0, 0.322468, 1.14623, 2.22594, -0.280852)
+cast_shadow = 0
+
+[node name="Cube_002" parent="Control/TextureRect/SubViewport/Projector" index="1"]
+transform = Transform3D(0.210969, 0, -0.0547933, 0, 0.568464, 0, 0.0547933, 0, 0.210969, 0.804436, 2.2741, -0.420119)
+cast_shadow = 0
+
+[node name="Cube_003" parent="Control/TextureRect/SubViewport/Projector" index="2"]
+cast_shadow = 0
+
+[node name="Cylinder_002" parent="Control/TextureRect/SubViewport/Projector" index="3"]
+transform = Transform3D(-0.101682, 0, -0.317271, 0, 0.071846, 0, 0.317271, 0, -0.101682, 1.14623, 2.34594, -0.280852)
+cast_shadow = 0
+
+[node name="Structure_HEA_PlayerShip_v4_NearProxy_002" parent="Control/TextureRect/SubViewport/Projector" index="4"]
+transform = Transform3D(0.377441, 0.0418787, -0.515554, 0.0328179, -0.638872, -0.0278696, -0.51621, -0.0099954, -0.378733, 0.394311, 3.85529, -1.40854)
+cast_shadow = 0
+
+[node name="Cylinder_003" parent="Control/TextureRect/SubViewport/Projector" index="5"]
+transform = Transform3D(0.381157, 0, 0.00669769, 0, 0.0378669, 0, -0.00669769, 0, 0.381157, 1.14623, 2.24174, -0.280852)
+cast_shadow = 0
+
+[node name="PojectorSpotLight3D" type="SpotLight3D" parent="Control/TextureRect/SubViewport/Projector"]
+transform = Transform3D(-1, -8.69236e-08, -9.32936e-09, 0, -0.106715, 0.99429, -8.74228e-08, 0.99429, 0.106715, 1.17374, 1.95393, -0.214824)
+light_color = Color(0.583283, 0.6799, 0.840777, 1)
+light_energy = 8.0
+light_volumetric_fog_energy = 7.0
+spot_range = 1.85871
+spot_angle = 34.3464
+
+[node name="PojectorMiniSpotLight3D" type="SpotLight3D" parent="Control/TextureRect/SubViewport/Projector"]
+transform = Transform3D(-1, -4.54908e-08, 7.46547e-08, 0, 0.853951, 0.520354, -8.74228e-08, 0.520354, -0.853951, 1.17374, 1.89379, -0.214824)
+light_color = Color(0.583283, 0.6799, 0.840777, 1)
+light_volumetric_fog_energy = 7.0
+spot_range = 0.891359
+spot_angle = 13.8009
+
+[node name="GraphicsAndLIght" type="Node3D" parent="Control/TextureRect/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+environment = ExtResource("6_diecd")
+
+[node name="FogVolume" type="FogVolume" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1116, 0)
+size = Vector3(30, 15, 30)
+shape = 2
+material = SubResource("FogMaterial_tr4hw")
+
+[node name="FogAnimationPlayer" type="AnimationPlayer" parent="Control/TextureRect/SubViewport/GraphicsAndLIght/FogVolume"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ionys")
+}
+
+[node name="SubstractFogVolume" type="FogVolume" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+size = Vector3(15, 10, 15)
+shape = 2
+material = SubResource("FogMaterial_nfcbj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+transform = Transform3D(0.948013, 0.22101, 0.228967, -0.231181, -0.0161601, 0.972777, 0.218693, -0.975138, 0.0357732, 2.88785, 3.56729, 0)
+light_color = Color(0.912034, 0.592064, 0.283432, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
+spot_range = 9.93166
+spot_attenuation = 0.85
+spot_angle = 45.472
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+transform = Transform3D(0.971637, 0.214235, -0.100125, 0.0899723, 0.0566553, 0.994332, 0.218693, -0.975138, 0.0357732, -2.11215, 3.56729, -0.581553)
+light_color = Color(0.949089, 0.987929, 0.984852, 1)
+light_energy = 4.586
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
+spot_range = 4.67854
+spot_attenuation = 0.85
+spot_angle = 45.472
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+transform = Transform3D(-0.338385, -0.110173, -0.934536, 0.915243, 0.192271, -0.354066, 0.218693, -0.975138, 0.0357732, -2.11215, 0.567294, -0.581553)
+light_color = Color(0.78615, 0.952024, 0.940666, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 4.67854
+spot_attenuation = 0.85
+spot_angle = 45.472
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/TextureRect/SubViewport/GraphicsAndLIght"]
+transform = Transform3D(0.759476, 0.514129, -0.398583, 0.353478, 0.188218, 0.916312, 0.546123, -0.836807, -0.0387859, 0, 0, 0)
+light_color = Color(0.674815, 0.674815, 0.674815, 1)
+
+[node name="PC" parent="Control/TextureRect/SubViewport" instance=ExtResource("7_c3rxn")]
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860878)
+script = null
+
+[node name="Cube_006" parent="Control/TextureRect/SubViewport/PC/Screen" index="0"]
+material_override = SubResource("ShaderMaterial_pjs6e")
+
+[node name="ItemDescription" parent="Control/TextureRect/SubViewport/PC/SubViewportContainer/SubViewport/MonitorHud" index="0"]
+script = null
+
+[node name="Reviews" parent="Control/TextureRect/SubViewport/PC/SubViewportContainer/SubViewport/MonitorHud" index="1"]
+script = null
+
+[node name="InventoryHud" parent="Control/TextureRect/SubViewport/PC/SubViewportContainer/SubViewport/MonitorHud" index="2"]
+script = null
+
+[node name="Table" parent="Control/TextureRect/SubViewport" instance=ExtResource("8_o6eu6")]
+script = null
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -1, -3.17865e-08, 0, 3.17865e-08, -1, 0.033, 0.79, -3.385)
+light_energy = 4.0
+spot_range = 1.85871
+spot_angle = 34.3464
+
+[node name="Camera3D" type="Camera3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(-0.819152, -0.0295987, 0.572812, -4.51142e-09, 0.998668, 0.0516037, -0.573576, 0.0422713, -0.818061, 0.9, 0.81, -2.2253)
+current = true
+fov = 40.0
 
 [node name="ButtonsMarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -122,3 +353,15 @@ theme_override_constants/margin_bottom = 15
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="Control/TextureRect/SubViewport/Projector"]
+[editable path="Control/TextureRect/SubViewport/PC"]
+[editable path="Control/TextureRect/SubViewport/PC/Screen"]
