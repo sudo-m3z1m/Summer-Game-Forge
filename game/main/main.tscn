@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=38 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
 [ext_resource type="Script" path="res://game/main/controller/enemy_turn.gd" id="14_pfyf7"]
 [ext_resource type="Script" path="res://game/main/controller/disks.gd" id="16_ckhg7"]
+[ext_resource type="Texture2D" uid="uid://jdwnnuq87shh" path="res://icon.png" id="21_844hn"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -85,6 +86,7 @@ size = Vector2(30, 30)
 script = ExtResource("12_0lehm")
 durability = 1
 cell = 0
+image = ExtResource("21_844hn")
 item_name = "Шлем - тиски"
 item_description = "История этого шлема уникальна, появился этот шлем, когда Ханма Юдзиро решил доказать президенту Северной Кореи, что его сила превосходит всякое оружие. Действительно уникальное сокровище"
 item_property = "Всегда сдавливает голову, но даёт огромную силу, вы убиваете врагов взглядом."
@@ -271,8 +273,9 @@ script = ExtResource("16_ckhg7")
 
 [node name="Table" parent="World" instance=ExtResource("4_vweva")]
 
-[node name="Deck" type="Node" parent="World"]
+[node name="Deck" type="Node" parent="World" node_paths=PackedStringArray("monitor")]
 script = ExtResource("5_bocpp")
+monitor = NodePath("../../PC")
 
 [node name="DisksContainer" type="Node3D" parent="World/Deck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.467, -1.7)
@@ -307,10 +310,10 @@ gizmo_extents = 0.1
 script = SubResource("GDScript_hbolx")
 
 [node name="DriveArea3D" type="Area3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.751013, 0.5, -1.00248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773732, 0.5, -1.16599)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/DriveArea3D"]
-transform = Transform3D(0.89216, 0, -0.451719, 0, 1, 0, 0.451719, 0, 0.89216, -0.0224261, 0.085083, 0.0161052)
+transform = Transform3D(0.89216, 0, -0.451719, 0, 1, 0, 0.451719, 0, 0.89216, 0.0107595, 0.085083, 0.0161052)
 shape = SubResource("BoxShape3D_gc5ty")
 
 [node name="StorageArea3D" type="Area3D" parent="World"]
@@ -321,9 +324,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190489, -0.0962323, 0.064
 shape = SubResource("BoxShape3D_bnrqg")
 
 [node name="DriveMarker3D" type="Marker3D" parent="World"]
-transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.758367, 0.531987, -1.00474)
+transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.758789, 0.534065, -1.16599)
 
 [node name="PC" parent="." instance=ExtResource("12_u08xi")]
-transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.0860879)
+transform = Transform3D(-0.999882, 0, 0.0153582, 0, 1, 0, -0.0153582, 0, -0.999882, 1.00276, 0, -0.245439)
 
 [editable path="World/Projector"]

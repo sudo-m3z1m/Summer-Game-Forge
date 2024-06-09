@@ -15,5 +15,6 @@ func _process(delta):
 
 func transition_to(state: String):
 	self.state.exit()
+	print(self.state)
 	self.state = get_node(state)
 	self.state.enter(owner, self)

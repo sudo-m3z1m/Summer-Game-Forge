@@ -14,12 +14,12 @@ func _ready() -> void:
 	update_inventory()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Quit"):
+	if event.is_action_pressed("Quit") and monitor.current_screen == self:
 		hide_inventory()
 
 func show_inventory(new_item: Item) -> void:
 	animation_player.play("AppearAnimation")
-	cells[randi() % cells.size()].grab_focus()
+	cells[0].grab_focus()
 	self.new_item = new_item
 
 func hide_inventory() -> void:
@@ -39,3 +39,6 @@ func update_inventory() -> void:
 	for cell in cells:
 		items.append(cell.current_item)
 	game_manager.update_inventory_items(items)
+
+func put_disk_to_drive() -> void:
+	game_manager.turn.transition_to("PutFloppyDiskToDrive")

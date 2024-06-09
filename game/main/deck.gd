@@ -1,5 +1,7 @@
 class_name Deck extends Node
 
+@export var monitor: Monitor
+
 var items: Array[Item] = []
 var disks: Array[FloppyDisk] = []
 @onready var disks_container = $DisksContainer
@@ -20,9 +22,11 @@ func append_disk(disk: FloppyDisk):
 
 func select_disk(index: int):
 	disks[index].animate_selection(true)
+	monitor.display_item_description(disks[index].item)
 
 func deselect_disk(index: int):
 	disks[index].animate_selection(false)
+	monitor.display_reviews()
 
 func get_disk_index(disk: FloppyDisk):
 	return disks.find(disk)

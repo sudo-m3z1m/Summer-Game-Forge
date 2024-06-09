@@ -13,6 +13,8 @@ func change_current_screen(new_screen: Control) -> void:
 	current_screen.show()
 
 func display_item_description(item: Item) -> void:
+	if current_screen == item_description_screen:
+		return
 	change_current_screen(item_description_screen)
 	current_screen.paste_item_info(item)
 
