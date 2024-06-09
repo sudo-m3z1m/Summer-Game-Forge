@@ -179,7 +179,7 @@ _data = {
 "RESET": SubResource("Animation_ux3o1")
 }
 
-[node name="InventoryHud" type="Control"]
+[node name="InventoryHud" type="Control" node_paths=PackedStringArray("cells")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,6 +187,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c7exy")
+cells = [NodePath("MarginContainer/Panel/VBoxContainer2/HBoxContainer/Cell"), NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell"), NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell2"), NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/Cell3"), NodePath("MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3/Cell")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://s1qkw0iakwf3"]
+[gd_scene load_steps=18 format=3 uid="uid://bpgrytes3wmk"]
 
-[ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
+[ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
@@ -134,7 +134,7 @@ visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
 
 [node name="Cube_008" parent="." index="10"]
-transform = Transform3D(-5.89424e-07, 0.0600909, -0.0462706, -0.173275, -2.31489e-07, 0, -2.14532e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
+transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="11"]
 modulate = Color(1, 1, 1, 0)
