@@ -45,11 +45,12 @@ func player_confirm_turn():
 var table_level = null
 func load_level():
 	var table_level = levels_parameters[current_level]["level"].instantiate()
-	add_child(table_level)
+	table.add_child(table_level)
 	for i in range(levels_parameters[current_level]["enemies_count"]):
 		var marker = table.get_enemy_marker()
 		var unit = get_enemy_unit()
-		table.spawn_unit(unit, marker)
+		table.spawn_unit(unit, marker) 
+	table.spawn_unit(preload("res://game/Units/character.tscn").instantiate(), table.player_marker)
 
 func unload_level():
 	if table_level:
@@ -57,7 +58,10 @@ func unload_level():
 	table.despawn_units()
 
 func _enemy_turn():
-	pass
+	var character = table.get_character()
+	
+	for unit in table.get_enemies():
+			await unit.attack(character)
 
 func get_enemy_unit():
 	return enemies_packeds[levels_parameters[current_level]["enemies"].pick_random()].instantiate()

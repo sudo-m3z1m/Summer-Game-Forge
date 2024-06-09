@@ -10,7 +10,8 @@ func _ready():
 
 func spawn_unit(unit: Unit, marker: Marker3D):
 	units_container.add_child(unit)
-	unit.position = marker.global_position
+	unit.position = marker.position
+	print(unit.global_position)
 
 func despawn_unit(unit: Unit):
 	unit.queue_free()
@@ -24,3 +25,13 @@ func get_enemy_marker():
 		if not marker.get_child_count():
 			return marker
 	return null
+
+func get_enemies():
+	return Array(units_container.get_children()).filter(func(unit):
+		return unit is Enemy
+	)
+
+func get_character():
+	for unit in units_container.get_children():
+		if unit is Unit and not unit is Enemy:
+			return unit

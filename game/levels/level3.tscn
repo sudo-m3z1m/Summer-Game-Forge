@@ -6,3 +6,4 @@
 [node name="TableLevel" instance=ExtResource("1_3psva")]
 
 [node name="L_3" parent="." index="0" instance=ExtResource("2_nmuit")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.722, 0.38, 0)

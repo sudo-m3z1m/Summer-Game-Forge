@@ -4,16 +4,10 @@ extends StateMachineState
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
-	
-	game_manager.load_level()
-	
+	await game_manager._enemy_turn()
 
 func update(delta: float):
 	super(delta)
-	
-	if Input.is_action_just_pressed("end_turn"):
-		if state == get_node(start_state):
-			try_transition("EnemyTurn")
 
 func exit():
 	pass
