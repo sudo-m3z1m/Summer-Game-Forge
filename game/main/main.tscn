@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/Items/item.gd" id="12_0lehm"]
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk_to_drive.gd" id="12_nvcx1"]
-[ext_resource type="PackedScene" uid="uid://s1qkw0iakwf3" path="res://game/main/monitor.tscn" id="12_u08xi"]
+[ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
 [ext_resource type="Script" path="res://game/main/controller/enemy_turn.gd" id="14_pfyf7"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]

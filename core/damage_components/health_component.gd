@@ -4,6 +4,8 @@ class_name HealthComponent extends Node
 @export var health: int
 @export_range(0, 5) var max_damage_take_height: float
 
+@onready var target: Node3D = get_parent()
+
 signal health_changed(delta)
 signal health_end()
 

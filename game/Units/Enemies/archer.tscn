@@ -76,7 +76,7 @@ _data = {
 [node name="Archer" instance=ExtResource("1_ihrui")]
 script = ExtResource("2_kt1oy")
 attack_resource = SubResource("Resource_801va")
-idle_animations = ["Idle", "AnotherIdle", "AnotherOneIdle"]
+idle_animations = Array[String](["Idle", "AnotherIdle", "AnotherOneIdle"])
 
 [node name="E_3" parent="Model" index="0" instance=ExtResource("4_lqyer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04127, -1.10331, 1.76496)

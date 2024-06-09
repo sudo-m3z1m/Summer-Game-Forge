@@ -17,9 +17,9 @@ enum Enemies {
 }
 
 var enemies_packeds: Dictionary = {
-	Enemies.Mage: preload("res://game/Units/enemy.tscn"),
-	Enemies.Archer: preload("res://game/Units/enemy.tscn"),
-	Enemies.Swordsman: preload("res://game/Units/enemy.tscn"),
+	Enemies.Mage: preload("res://game/Units/Enemies/archer.tscn"),
+	Enemies.Archer: preload("res://game/Units/Enemies/mage.tscn"),
+	Enemies.Swordsman: preload("res://game/Units/Enemies/swordsman.tscn"),
 }
 
 var levels_parameters: Dictionary = {
