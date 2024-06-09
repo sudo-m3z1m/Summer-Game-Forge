@@ -3,6 +3,8 @@ class_name GameManager extends Node
 @export var table: Table
 @export var inventory_hud: InventoryHud
 
+@onready var turn: StateMachineState = $"../World/Controller/Match/Turn"
+
 signal enemy_turn
 signal player_turn
 signal player_grab_disk

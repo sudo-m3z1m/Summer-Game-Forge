@@ -30,3 +30,4 @@ func change_item(new_item: Item) -> void:
 	current_item.break_item()
 	current_item = new_item
 	item_texture.texture = current_item.image
+	inventory_hud.put_disk_to_drive()

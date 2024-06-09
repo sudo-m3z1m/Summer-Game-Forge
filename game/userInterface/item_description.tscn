@@ -238,6 +238,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "Предметово Словцо"
 visible_characters = 0
 visible_ratio = 0.0
@@ -250,16 +251,18 @@ theme_override_constants/separation = 5
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "Описание"
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="DescriptionTextLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(543.895, 0)
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "Этот предмет был создан великими челами с горы Нипучухту.
 Его делали несколькими поколениями, а потом он попал к 
 тебе, мда."
@@ -284,6 +287,7 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "Максимальная прочность
  предмета:"
 horizontal_alignment = 1
@@ -292,9 +296,11 @@ visible_ratio = 0.0
 
 [node name="DurabilityTextLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "6"
 horizontal_alignment = 1
 visible_characters = 0
@@ -308,7 +314,8 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
-text = "Свойство при разрушении:"
+theme_override_font_sizes/font_size = 20
+text = "Проклятие разрушения:"
 horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
@@ -319,6 +326,7 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qppth")
+theme_override_font_sizes/font_size = 20
 text = "Мгновенно убивает всех на карте"
 horizontal_alignment = 1
 autowrap_mode = 2
