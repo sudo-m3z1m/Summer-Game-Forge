@@ -9,6 +9,20 @@
 script = ExtResource("3_1t3ip")
 damage = 1
 
+[sub_resource type="Animation" id="Animation_36ciq"]
+resource_name = "AnotherIdle"
+length = 3.73
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_2/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Cylinder_027Action"),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_ei8t6"]
 resource_name = "Attack"
 length = 3.62
@@ -34,20 +48,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Icosphere_006Action"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_36ciq"]
-resource_name = "AnotherIdle"
-length = 3.73
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/E_2/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Cylinder_027Action"),
 "times": PackedFloat32Array(0)
 }
 

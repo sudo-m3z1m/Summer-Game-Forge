@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ce20ft45pxeve"]
+[gd_scene load_steps=37 format=3 uid="uid://ce20ft45pxeve"]
 
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_obpee"]
 [ext_resource type="Script" path="res://game/main/sound_manager.gd" id="1_pqany"]
@@ -15,11 +15,13 @@
 [ext_resource type="Script" path="res://game/main/disks_container.gd" id="6_vxhaq"]
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk.gd" id="8_ber8l"]
 [ext_resource type="Script" path="res://game/main/monitor_state.gd" id="8_igydc"]
+[ext_resource type="Script" path="res://game/main/controller/match.gd" id="8_v02cy"]
 [ext_resource type="PackedScene" uid="uid://cgebrvbe4tbx0" path="res://game/Disks/floppy_disk.tscn" id="11_auavb"]
 [ext_resource type="Script" path="res://game/Items/item.gd" id="12_0lehm"]
 [ext_resource type="Script" path="res://game/main/controller/put_floppy_disk_to_drive.gd" id="12_nvcx1"]
 [ext_resource type="PackedScene" uid="uid://bpgrytes3wmk" path="res://game/main/monitor.tscn" id="12_u08xi"]
 [ext_resource type="Script" path="res://game/main/controller/enemy_turn.gd" id="14_pfyf7"]
+[ext_resource type="Script" path="res://game/main/controller/disks.gd" id="16_ckhg7"]
 
 [sub_resource type="Gradient" id="Gradient_wubxn"]
 
@@ -130,6 +132,9 @@ func _process(delta):
 [sub_resource type="BoxShape3D" id="BoxShape3D_gc5ty"]
 size = Vector3(0.136536, 0.379639, 0.290985)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnrqg"]
+size = Vector3(0.902588, 0.109314, 0.410034)
+
 [node name="Main" type="Node"]
 script = ExtResource("1_obpee")
 
@@ -216,45 +221,52 @@ fov = 60.0
 
 [node name="Controller" type="Node" parent="World"]
 script = ExtResource("3_q38pu")
+start_state = "Match"
+
+[node name="Match" type="Node" parent="World/Controller"]
+script = ExtResource("8_v02cy")
 start_state = "Turn"
 
-[node name="Turn" type="Node" parent="World/Controller"]
+[node name="Turn" type="Node" parent="World/Controller/Match"]
 script = ExtResource("4_h85v6")
 start_state = "ChoosingAction"
 
-[node name="ChoosingAction" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("deck", "camera")]
+[node name="ChoosingAction" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("deck", "camera")]
 script = ExtResource("5_egoav")
-deck = NodePath("../../../Deck")
-camera = NodePath("../../../Camera3D")
+deck = NodePath("../../../../Deck")
+camera = NodePath("../../../../Camera3D")
 
-[node name="GrabFloppyDisk" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "deck", "monitor")]
+[node name="GrabFloppyDisk" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("hand_marker", "deck", "monitor")]
 script = ExtResource("6_ebyv6")
-hand_marker = NodePath("../../../HandMarker3D")
-deck = NodePath("../../../Deck")
-monitor = NodePath("../../../../PC")
+hand_marker = NodePath("../../../../HandMarker3D")
+deck = NodePath("../../../../Deck")
+monitor = NodePath("../../../../../PC")
 grab_time = 0.2
 
-[node name="PutFloppyDisk" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
+[node name="PutFloppyDisk" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("hand_marker", "deck")]
 script = ExtResource("8_ber8l")
-hand_marker = NodePath("../../../HandMarker3D")
-deck = NodePath("../../../Deck")
+hand_marker = NodePath("../../../../HandMarker3D")
+deck = NodePath("../../../../Deck")
 put_time = 0.2
 
-[node name="PutFloppyDiskToDrive" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("hand_marker", "drive_marker", "monitor")]
+[node name="PutFloppyDiskToDrive" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("hand_marker", "drive_marker", "monitor")]
 script = ExtResource("12_nvcx1")
-hand_marker = NodePath("../../../HandMarker3D")
-drive_marker = NodePath("../../../DriveMarker3D")
-monitor = NodePath("../../../../PC")
+hand_marker = NodePath("../../../../HandMarker3D")
+drive_marker = NodePath("../../../../DriveMarker3D")
+monitor = NodePath("../../../../../PC")
 
-[node name="MonitorState" type="Node" parent="World/Controller/Turn" node_paths=PackedStringArray("camera", "monitor")]
+[node name="MonitorState" type="Node" parent="World/Controller/Match/Turn" node_paths=PackedStringArray("camera", "monitor")]
 script = ExtResource("8_igydc")
-camera = NodePath("../../../Camera3D")
-monitor = NodePath("../../../../PC")
+camera = NodePath("../../../../Camera3D")
+monitor = NodePath("../../../../../PC")
 
-[node name="AngleNode3D" type="Node3D" parent="World/Controller/Turn/MonitorState"]
+[node name="AngleNode3D" type="Node3D" parent="World/Controller/Match/Turn/MonitorState"]
 
-[node name="EnemyTurn" type="Node" parent="World/Controller"]
+[node name="EnemyTurn" type="Node" parent="World/Controller/Match"]
 script = ExtResource("14_pfyf7")
+
+[node name="Disks" type="Node" parent="World/Controller"]
+script = ExtResource("16_ckhg7")
 
 [node name="Table" parent="World" instance=ExtResource("4_vweva")]
 
@@ -299,6 +311,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.751013, 0.5, -1.00248)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/DriveArea3D"]
 transform = Transform3D(0.89216, 0, -0.451719, 0, 1, 0, 0.451719, 0, 0.89216, -0.0224261, 0.085083, 0.0161052)
 shape = SubResource("BoxShape3D_gc5ty")
+
+[node name="StorageArea3D" type="Area3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.421429, 0.436064, -1.32878)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StorageArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190489, -0.0962323, 0.0643921)
+shape = SubResource("BoxShape3D_bnrqg")
 
 [node name="DriveMarker3D" type="Marker3D" parent="World"]
 transform = Transform3D(0.878867, 0, -0.477067, 0, 1, 0, 0.477067, 0, 0.878867, -0.758367, 0.531987, -1.00474)

@@ -1,19 +1,17 @@
 extends StateMachineState
 
-@onready var game_manager = $"../../../../GameManager"
+@onready var game_manager = $"../../../GameManager"
 
 func enter(object: Object, state_machine: StateMachine):
 	super(object, state_machine)
+	game_manager.load_level()
+	#TODO подрубить переключение когда все противники уничтожены (или игрок)
 
 func update(delta: float):
 	super(delta)
-	
-	if Input.is_action_just_pressed("end_turn"):
-		if state == get_node(start_state):
-			try_transition("EnemyTurn")
 
 func exit():
-	pass
+	game_manager.unload_level()
 
 func try_transition(state: String):
 	state_machine.transition_to(state)

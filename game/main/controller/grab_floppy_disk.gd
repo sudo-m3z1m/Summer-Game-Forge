@@ -29,7 +29,7 @@ func update(delta: float):
 	if locked: return
 	
 	var mouse_position = get_viewport().get_mouse_position()
-	var point = state_machine.state_machine.get_world_point(mouse_position, true)
+	var point = state_machine.state_machine.state_machine.get_world_point(mouse_position, true)
 	var collider = point.get("collider")
 	
 	if Input.is_action_just_pressed("left_mouse"):

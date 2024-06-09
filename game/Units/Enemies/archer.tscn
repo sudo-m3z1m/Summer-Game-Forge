@@ -9,34 +9,6 @@
 script = ExtResource("3_g8qgx")
 damage = 1
 
-[sub_resource type="Animation" id="Animation_pcrth"]
-resource_name = "Attack"
-length = 3.9
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/E_3/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Cube_028Action"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_kqb74"]
-resource_name = "Idle"
-length = 4.55
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/E_3/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Icosphere_007Action"),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="Animation" id="Animation_8swg8"]
 resource_name = "AnotherIdle"
 length = 3.65
@@ -62,6 +34,34 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Plane_001Action"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pcrth"]
+resource_name = "Attack"
+length = 3.9
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_3/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Cube_028Action"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_kqb74"]
+resource_name = "Idle"
+length = 4.55
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/E_3/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Icosphere_007Action"),
 "times": PackedFloat32Array(0)
 }
 
