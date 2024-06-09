@@ -166,7 +166,6 @@ layout_mode = 1
 
 [node name="Reviews" parent="SubViewportContainer/SubViewport/MonitorHud" index="1" instance=ExtResource("3_ri7o6")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 
 [node name="InventoryHud" parent="SubViewportContainer/SubViewport/MonitorHud" index="2" node_paths=PackedStringArray("monitor") instance=ExtResource("6_3i1gx")]

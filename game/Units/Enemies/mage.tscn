@@ -12,7 +12,6 @@ damage = 1
 [sub_resource type="Animation" id="Animation_odsyb"]
 resource_name = "AnotherIdle"
 length = 3.55
-loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +40,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_dsdhl"]
 resource_name = "Idle"
 length = 4.55
-loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -12,7 +12,6 @@ damage = 1
 [sub_resource type="Animation" id="Animation_8swg8"]
 resource_name = "AnotherIdle"
 length = 3.77
-loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,13 +20,12 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("KeyAction"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_r1mfp"]
 resource_name = "AnotherOneIdle"
 length = 4.6615
-loop_mode = 1
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,7 +34,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Plane_001Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_pcrth"]
@@ -50,7 +48,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Cube_028Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="Animation_kqb74"]
@@ -65,7 +63,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Icosphere_007Action"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2qljp"]
