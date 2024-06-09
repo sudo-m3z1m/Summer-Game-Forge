@@ -1,34 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgebrvbe4tbx0"]
+[gd_scene load_steps=3 format=3 uid="uid://cgebrvbe4tbx0"]
 
 [ext_resource type="Script" path="res://game/Disks/floppy_disk.gd" id="1_rb6wb"]
-[ext_resource type="PackedScene" uid="uid://bgucdb0aijt84" path="res://assets/FloppyDisk/D_1glb.glb" id="2_6dt2e"]
-[ext_resource type="Texture2D" uid="uid://c4bjhryyfj72h" path="res://assets/FloppyDisk/D_1glb_stickers4.webp" id="3_pvmvx"]
-[ext_resource type="Texture2D" uid="uid://fa0e1gwt86v7" path="res://assets/FloppyDisk/D_1glb_stickers3.png" id="4_hs5ge"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5s6t"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("3_pvmvx")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1hvg"]
-resource_name = "Material.010"
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-albedo_texture = ExtResource("4_hs5ge")
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tv02n"]
-resource_name = "Material.004"
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-albedo_texture = ExtResource("3_pvmvx")
-metallic = 0.440367
-roughness = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j74kb"]
 size = Vector3(0.15, 0.02, 0.15)
@@ -39,21 +11,6 @@ max_selection_height = 0.05
 
 [node name="Model" type="Node3D" parent="."]
 
-[node name="D_1glb" parent="Model" instance=ExtResource("2_6dt2e")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.0263638, 0)
-
-[node name="Plane" parent="Model/D_1glb" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m5s6t")
-
-[node name="Plane_001" parent="Model/D_1glb" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_a1hvg")
-
-[node name="Plane_003" parent="Model/D_1glb" index="3"]
-transform = Transform3D(-0.684476, -3.85758e-07, -0.431232, 0.431232, 1.92879e-07, -0.684476, 4.33977e-07, -0.808992, 4.82197e-08, 0.865294, -1.0357, 0.0479799)
-surface_material_override/0 = SubResource("StandardMaterial3D_tv02n")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.98023e-08, -0.000499994, 2.98023e-08)
 shape = SubResource("BoxShape3D_j74kb")
-
-[editable path="Model/D_1glb"]

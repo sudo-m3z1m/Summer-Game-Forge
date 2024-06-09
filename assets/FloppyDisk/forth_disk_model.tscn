@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy5k0q4aj6rfb"]
+
+[ext_resource type="PackedScene" uid="uid://byy12pta21uxt" path="res://assets/FloppyDisk/D_4glb.glb" id="1_goc2l"]
+[ext_resource type="Texture2D" uid="uid://cn6rxks365kg8" path="res://assets/FloppyDisk/D_4glb_stickers4.webp" id="2_pgxrg"]
+[ext_resource type="Texture2D" uid="uid://b6lvire2130l4" path="res://assets/FloppyDisk/D_4glb_stickers3.png" id="3_kvwi1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_771xq"]
+resource_name = "Material.004"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_pgxrg")
+metallic = 0.440367
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb5nu"]
+resource_name = "Material.010"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_kvwi1")
+roughness = 0.5
+
+[node name="ForthDiskModel" instance=ExtResource("1_goc2l")]
+
+[node name="Cube_004" parent="." index="0"]
+transform = Transform3D(1.41995, 0, 0, 0, 1.41995, 0, 0, 0, 5.61732, -10.3102, 0, 0)
+
+[node name="Plane_009" parent="." index="1"]
+transform = Transform3D(-0.425703, -9.02156e-07, -0.914848, 0.914848, 5.41294e-07, -0.425703, 8.1194e-07, -1.00904, 6.61581e-07, 0.00257874, -0.256928, 0.04798)
+surface_material_override/0 = SubResource("StandardMaterial3D_771xq")
+
+[node name="Plane_012" parent="." index="2"]
+transform = Transform3D(1.43506, 1.55099e-08, 0.0254882, 0.0719689, 0, -0.508233, -2.67636e-08, 0.832682, 0, -0.167242, -0.773401, 0.0491659)
+surface_material_override/0 = SubResource("StandardMaterial3D_cb5nu")
