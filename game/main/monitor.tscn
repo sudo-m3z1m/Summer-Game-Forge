@@ -130,10 +130,12 @@ transform = Transform3D(-0.204388, 1.14658e-08, 0.0336324, -1.94548e-08, -0.1427
 material_override = SubResource("ShaderMaterial_lqs0k")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="11"]
-modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 handle_input_locally = false
@@ -157,20 +159,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryHud" parent="SubViewportContainer/SubViewport/MonitorHud" index="0" node_paths=PackedStringArray("monitor") instance=ExtResource("6_3i1gx")]
+[node name="ItemDescription" parent="SubViewportContainer/SubViewport/MonitorHud" index="0" instance=ExtResource("2_f0jec")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Reviews" parent="SubViewportContainer/SubViewport/MonitorHud" index="1" instance=ExtResource("3_ri7o6")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="InventoryHud" parent="SubViewportContainer/SubViewport/MonitorHud" index="2" node_paths=PackedStringArray("monitor") instance=ExtResource("6_3i1gx")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 monitor = NodePath("../../../..")
-
-[node name="ItemDescription" parent="SubViewportContainer/SubViewport/MonitorHud" index="1" instance=ExtResource("2_f0jec")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
-[node name="Reviews" parent="SubViewportContainer/SubViewport/MonitorHud" index="2" instance=ExtResource("3_ri7o6")]
-unique_name_in_owner = true
-layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
 libraries = {
