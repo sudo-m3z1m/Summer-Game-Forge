@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ctle"]
 render_priority = 0
 shader = ExtResource("3_ci03t")
-shader_parameter/color = Color(0.611765, 0.729412, 1, 1)
+shader_parameter/color = Color(0.336985, 0.682803, 0.884139, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
 shader_parameter/_emission = 1.225
@@ -16,7 +16,7 @@ shader_parameter/_frensel = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u851g"]
 render_priority = 0
 shader = ExtResource("3_ci03t")
-shader_parameter/color = Color(1, 0.596078, 0.698039, 1)
+shader_parameter/color = Color(0.529052, 0.770885, 0.912426, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
 shader_parameter/_emission = 1.225
@@ -34,7 +34,7 @@ shader_parameter/_frensel = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
 render_priority = 0
 shader = ExtResource("3_ci03t")
-shader_parameter/color = Color(0, 0.890196, 0, 1)
+shader_parameter/color = Color(0.263483, 0.693657, 0.756301, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
 shader_parameter/_emission = 1.225

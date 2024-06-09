@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
 render_priority = 0
 shader = ExtResource("3_f25j5")
-shader_parameter/color = Color(0, 0.890196, 0, 1)
+shader_parameter/color = Color(0.195173, 0.483065, 0.638384, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
 shader_parameter/_emission = 1.225
@@ -34,7 +34,7 @@ shader_parameter/_frensel = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u851g"]
 render_priority = 0
 shader = ExtResource("3_f25j5")
-shader_parameter/color = Color(1, 0.596078, 0.698039, 1)
+shader_parameter/color = Color(0.175777, 0.629635, 1, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
 shader_parameter/_emission = 1.225

@@ -183,4 +183,11 @@ libraries = {
 [node name="Cube_008" parent="." index="13"]
 transform = Transform3D(-5.89426e-07, 0.0600909, -0.0462707, -0.173275, -2.31489e-07, 0, -2.14533e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="15"]
+transform = Transform3D(-0.923372, -0.194526, -0.330973, -0.32726, 0.849565, 0.413691, 0.20071, 0.490305, -0.848125, 0.638507, 0.728426, 1.17482)
+light_volumetric_fog_energy = 0.1
+spot_range = 0.763608
+spot_attenuation = 0.85
+spot_angle = 57.4168
+
 [editable path="Screen"]

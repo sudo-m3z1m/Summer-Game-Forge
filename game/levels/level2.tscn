@@ -7,10 +7,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_co05v"]
 render_priority = 0
 shader = ExtResource("3_alhpn")
-shader_parameter/color = Color(0, 0.890196, 0, 1)
+shader_parameter/color = Color(0, 0.382375, 0, 1)
 shader_parameter/lines1 = 3.0
 shader_parameter/lines2 = 5.0
-shader_parameter/_emission = 1.225
+shader_parameter/_emission = 5.0
 shader_parameter/_frensel = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_neq14"]
