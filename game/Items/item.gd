@@ -19,7 +19,6 @@ func item_can_be_placed(cell: Cell.CellType) -> bool:
 func damage(damage: int) -> bool:
 	durability -= damage
 	if durability > 0:
-		prints(item_name, durability)
 		return false
 	return true
 

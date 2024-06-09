@@ -1,14 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://save3uluuyjx"]
+[gd_scene load_steps=16 format=3 uid="uid://save3uluuyjx"]
 
 [ext_resource type="PackedScene" uid="uid://d4i0anh63ko8d" path="res://game/Units/table_unit.tscn" id="1_ihrui"]
 [ext_resource type="Script" path="res://game/Units/enemy.gd" id="2_kt1oy"]
 [ext_resource type="Script" path="res://core/damage_components/attack.gd" id="3_g8qgx"]
 [ext_resource type="PackedScene" uid="uid://d3l6dj8vbvnlf" path="res://assets/Enemies/E_3.glb" id="4_lqyer"]
 [ext_resource type="Script" path="res://game/Units/Enemies/enemy_health_component.gd" id="4_vp63h"]
+[ext_resource type="Shader" path="res://assets/Shaders/hologram_shader.gdshader" id="6_6u5tr"]
 
 [sub_resource type="Resource" id="Resource_801va"]
 script = ExtResource("3_g8qgx")
 damage = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tw4u"]
+render_priority = 0
+shader = ExtResource("6_6u5tr")
+shader_parameter/color = Color(0.603922, 0.4, 0, 1)
+shader_parameter/lines1 = 2.0
+shader_parameter/lines2 = 2.0
+shader_parameter/_emission = 10.0
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq6yi"]
+render_priority = 0
+shader = ExtResource("6_6u5tr")
+shader_parameter/color = Color(0, 0.709804, 0.741176, 1)
+shader_parameter/lines1 = 2.0
+shader_parameter/lines2 = 2.0
+shader_parameter/_emission = 3.921
+shader_parameter/_frensel = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_455fx"]
+render_priority = 0
+shader = ExtResource("6_6u5tr")
+shader_parameter/color = Color(0, 0.709804, 0.741176, 1)
+shader_parameter/lines1 = 2.0
+shader_parameter/lines2 = 2.0
+shader_parameter/_emission = 3.472
+shader_parameter/_frensel = 1.0
 
 [sub_resource type="Animation" id="Animation_8swg8"]
 resource_name = "AnotherIdle"
@@ -91,9 +119,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04127, -1.10331, 1.76496)
 [node name="Plane_001" parent="Model/E_3" index="0"]
 transform = Transform3D(0.00380125, 0.0492027, -0.00264225, 0.000379, -0.00182216, -0.0729373, -0.0492337, 0.00378483, -0.000765473, 4.08343, 1.10588, -1.76504)
 "blend_shapes/Key 1" = 0.287318
+surface_material_override/0 = SubResource("ShaderMaterial_4tw4u")
+
+[node name="Icosphere_007" parent="Model/E_3" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_yq6yi")
+
+[node name="Cylinder_028" parent="Model/E_3" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_455fx")
 
 [node name="Cube_028" parent="Model/E_3" index="3"]
 transform = Transform3D(-0.000248855, -2.8645e-05, -2.52187e-05, 7.73946e-06, 4.89241e-05, -1.52024e-05, 0.00147068, -5.10451e-06, -4.18728e-06, 3.93943, 1.19756, -0.868372)
+surface_material_override/0 = SubResource("ShaderMaterial_455fx")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
