@@ -1,8 +1,11 @@
-extends Panel
+extends Button
 
 class_name Cell
 
 @export var current_cell_type: CellType
+@export var inventory_hud: InventoryHud
+
+@onready var item_texture: TextureRect = $MarginContainer/TextureRect
 
 var current_item: Item = Item.new()
 
@@ -14,13 +17,15 @@ enum CellType {
 	LEGS
 }
 
-func _process(delta) -> void:
-	if has_focus():
-		print(self)
+func _ready() -> void:
+	pressed.connect(apply_cell_choice)
+
+func apply_cell_choice() -> void:
+	change_item(inventory_hud.new_item)
 
 func change_item(new_item: Item) -> void:
 	if new_item.cell != current_cell_type:
 		return
 	current_item.break_item()
 	current_item = new_item
-	return
+	item_texture.texture = current_item.image

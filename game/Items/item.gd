@@ -6,6 +6,7 @@ class_name Item
 @export var cell: Cell.CellType
 
 #TODO maybe need to make dict with items id
+@export var image: Texture2D
 @export var item_name: String
 @export_multiline var item_description: String
 @export_multiline var item_property: String

@@ -232,10 +232,11 @@ theme_override_constants/separation = 35
 layout_mode = 2
 alignment = 1
 
-[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/HBoxContainer" instance=ExtResource("3_sm50g")]
+[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/HBoxContainer" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
 visible = false
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../VBoxContainer/HBoxContainer2/Cell2")
+inventory_hud = NodePath("../../../../..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer2"]
 layout_mode = 2
@@ -245,13 +246,14 @@ theme_override_constants/separation = 45
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
 visible = false
 layout_mode = 2
 focus_neighbor_right = NodePath("../Cell2")
 current_cell_type = 2
+inventory_hud = NodePath("../../../../../..")
 
-[node name="Cell2" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+[node name="Cell2" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
 visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Cell")
@@ -259,25 +261,27 @@ focus_neighbor_top = NodePath("../../../HBoxContainer/Cell")
 focus_neighbor_right = NodePath("../Cell3")
 focus_neighbor_bottom = NodePath("../../HBoxContainer3/Cell")
 current_cell_type = 1
+inventory_hud = NodePath("../../../../../..")
 
-[node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_sm50g")]
+[node name="Cell3" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
 visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Cell2")
 current_cell_type = 3
+inventory_hud = NodePath("../../../../../..")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("3_sm50g")]
+[node name="Cell" parent="MarginContainer/Panel/VBoxContainer2/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("inventory_hud") instance=ExtResource("3_sm50g")]
 visible = false
 layout_mode = 2
 current_cell_type = 4
+inventory_hud = NodePath("../../../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ah0ko")
 }
-autoplay = "AppearAnimation"
