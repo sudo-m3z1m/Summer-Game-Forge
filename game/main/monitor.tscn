@@ -1,22 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=14 format=3 uid="uid://bpgrytes3wmk"]
 
 [ext_resource type="PackedScene" uid="uid://de828xaee07r3" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
 [ext_resource type="PackedScene" uid="uid://4lwrm206g05t" path="res://game/userInterface/item_description.tscn" id="2_f0jec"]
 [ext_resource type="PackedScene" uid="uid://cymwe2oss1mde" path="res://assets/Monitor/Screen.glb" id="2_ft710"]
-[ext_resource type="Texture2D" uid="uid://jdwnnuq87shh" path="res://icon.png" id="3_fayk3"]
-[ext_resource type="Script" path="res://game/Items/item.gd" id="3_lrbcl"]
 [ext_resource type="PackedScene" uid="uid://ban0msdyd8unm" path="res://game/userInterface/reviews.tscn" id="3_ri7o6"]
 [ext_resource type="PackedScene" uid="uid://bn47o678qcmyq" path="res://game/userInterface/inventory_hud.tscn" id="6_3i1gx"]
-
-[sub_resource type="Resource" id="Resource_ibs77"]
-script = ExtResource("3_lrbcl")
-durability = 2
-cell = 0
-image = ExtResource("3_fayk3")
-item_name = "Name"
-item_description = "safasfasf"
-item_property = "fasfwasdwafd"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xd3jc"]
 size = Vector3(0.529358, 0.468994, 0.350342)
@@ -67,7 +56,6 @@ shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
 
 [node name="PC" instance=ExtResource("1_1x2hh")]
 script = ExtResource("2_doy1v")
-test_item = SubResource("Resource_ibs77")
 
 [node name="CameraMarker" type="Marker3D" parent="." index="0"]
 transform = Transform3D(0.936103, 0, 0.351727, 0, 1, 0, -0.351727, 0, 0.936103, 0.623481, 0.702109, 1.14031)
