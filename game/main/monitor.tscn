@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpgrytes3wmk"]
+[gd_scene load_steps=18 format=3 uid="uid://s1qkw0iakwf3"]
 
 [ext_resource type="PackedScene" uid="uid://4i1fo2eorva8" path="res://assets/Monitor/PC.glb" id="1_1x2hh"]
 [ext_resource type="Script" path="res://game/main/monitor.gd" id="2_doy1v"]
@@ -43,7 +43,7 @@ height = 64
 noise = SubResource("FastNoiseLite_pajjj")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8w3ig"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lqs0k"]
 resource_local_to_scene = true
@@ -54,9 +54,8 @@ shader_parameter/noise = SubResource("NoiseTexture2D_2mn3h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6rv3"]
 
-[sub_resource type="Animation" id="Animation_5jxeg"]
-resource_name = "open_drive"
-length = 0.3
+[sub_resource type="Animation" id="Animation_s1e1i"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,10 +63,10 @@ tracks/0/path = NodePath("Cube_008:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 5.93412, -1.5708), Vector3(-4.59934e-08, 2.84351, -1.5708)]
+"values": [Vector3(0, 5.93412, -1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_dicw8"]
@@ -86,8 +85,9 @@ tracks/0/keys = {
 "values": [Vector3(-4.59934e-08, 2.84351, -1.5708), Vector3(0, 5.93412, -1.5708)]
 }
 
-[sub_resource type="Animation" id="Animation_s1e1i"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_5jxeg"]
+resource_name = "open_drive"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +95,10 @@ tracks/0/path = NodePath("Cube_008:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 5.93412, -1.5708)]
+"values": [Vector3(0, 5.93412, -1.5708), Vector3(-4.59934e-08, 2.84351, -1.5708)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3rtqm"]
@@ -134,13 +134,21 @@ visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_y6rv3")
 
 [node name="Cube_008" parent="." index="10"]
-transform = Transform3D(-7.1173e-09, 0.0600909, -0.0462708, -0.173275, -2.79523e-09, 0, -2.59049e-09, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
+transform = Transform3D(-5.89424e-07, 0.0600909, -0.0462706, -0.173275, -2.31489e-07, 0, -2.14532e-07, 0.0218713, 0.127128, 1.71402, 0.556752, 0.976557)
 
-[node name="SubViewport" type="SubViewport" parent="." index="11"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="11"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+handle_input_locally = false
 size = Vector2i(800, 640)
 size_2d_override = Vector2i(740, 645)
+render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="SubViewport" index="0"]
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,7 +156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.548443, 0.812331, 0.945205, 1)
 
-[node name="MonitorHud" type="Control" parent="SubViewport" index="1"]
+[node name="MonitorHud" type="Control" parent="SubViewportContainer/SubViewport" index="1"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,18 +164,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemDescription" parent="SubViewport/MonitorHud" index="0" instance=ExtResource("2_f0jec")]
+[node name="InventoryHud" parent="SubViewportContainer/SubViewport/MonitorHud" index="0" node_paths=PackedStringArray("monitor") instance=ExtResource("6_3i1gx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+monitor = NodePath("../../../..")
+
+[node name="ItemDescription" parent="SubViewportContainer/SubViewport/MonitorHud" index="1" instance=ExtResource("2_f0jec")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Reviews" parent="SubViewport/MonitorHud" index="1" instance=ExtResource("3_ri7o6")]
+[node name="Reviews" parent="SubViewportContainer/SubViewport/MonitorHud" index="2" instance=ExtResource("3_ri7o6")]
 unique_name_in_owner = true
-layout_mode = 1
-
-[node name="InventoryHud" parent="SubViewport/MonitorHud" index="2" instance=ExtResource("6_3i1gx")]
-unique_name_in_owner = true
-visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]

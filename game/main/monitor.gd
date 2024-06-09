@@ -19,6 +19,6 @@ func display_item_description(item: Item) -> void:
 func display_reviews() -> void:
 	change_current_screen(reviews_screen)
 
-func display_inventory() -> void:
+func display_inventory(new_item: Item) -> void:
 	change_current_screen(inventory_screen)
-	inventory_screen.show_invntory()
+	inventory_screen.show_inventory(new_item)

@@ -28,10 +28,3 @@ func on_disk_exiting(disk):
 	await get_tree().process_frame
 	for c in get_children():
 		child_entered_tree.emit(c)
-
-const FLOPPY_DISK = preload("res://game/Disks/floppy_disk.tscn")
-func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		add_child(FLOPPY_DISK.instantiate())
-	elif Input.is_action_just_pressed("ui_down"):
-		get_child(0).queue_free()
